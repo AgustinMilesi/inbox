@@ -1,0 +1,168 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum MessageStatus {
+  NEW
+  READ
+  ARCHIVED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime @default(now())
+
+  sessions       Session[]
+  passwordResets PasswordReset[]
+  memberships    Membership[]
+}
+
+// The primary key is the SHA-256 of the cookie token, never the token itself.
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Same idea as Session: only the hash of the emailed token is stored.
+model PasswordReset {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// A workspace. Every piece of business data hangs from one of these,
+// which is what lets the ERP reuse the same tenants later on.
+model Organization {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  notifyEmail   String?
+  webhookUrl    String?
+  webhookSecret String?
+  createdAt     DateTime @default(now())
+
+  memberships Membership[]
+  forms       Form[]
+  messages    Message[]
+  contacts    Contact[]
+  apiKeys     ApiKey[]
+}
+
+model Membership {
+  id             String   @id @default(cuid())
+  userId         String
+  organizationId String
+  role           Role     @default(MEMBER)
+  createdAt      DateTime @default(now())
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId])
+  @@index([organizationId])
+}
+
+model Form {
+  id             String   @id @default(cuid())
+  organizationId String
+  publicId       String   @unique
+  name           String
+  active         Boolean  @default(true)
+  allowedOrigins String[]
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  messages     Message[]
+
+  @@index([organizationId])
+}
+
+model Contact {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  email          String
+  phone          String?
+  company        String?
+  notes          String?
+  // The id this person has in another system (the ERP, for example)
+  externalId     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  messages     Message[]
+
+  @@unique([organizationId, email])
+  @@unique([organizationId, externalId])
+  @@index([organizationId, createdAt])
+}
+
+model Message {
+  id             String        @id @default(cuid())
+  organizationId String
+  formId         String?
+  contactId      String?
+  name           String
+  email          String
+  subject        String
+  body           String
+  status         MessageStatus @default(NEW)
+  createdAt      DateTime      @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  form         Form?        @relation(fields: [formId], references: [id], onDelete: SetNull)
+  contact      Contact?     @relation(fields: [contactId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, status, createdAt])
+  @@index([contactId])
+}
+
+// Keys for the ERP and other integrations. Only the hash is stored.
+model ApiKey {
+  id             String    @id @default(cuid())
+  organizationId String
+  name           String
+  prefix         String
+  keyHash        String    @unique
+  lastUsedAt     DateTime?
+  revokedAt      DateTime?
+  createdAt      DateTime  @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+}
+
+// Fixed-window counters kept in Postgres, so rate limits also work on serverless.
+model RateLimit {
+  key     String   @id
+  count   Int
+  resetAt DateTime
+}
