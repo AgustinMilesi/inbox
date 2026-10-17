@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Headline } from "@/components/Headline";
 import { PreferencesBlock } from "@/components/PreferencesBlock";
 import { PreferencesControls } from "@/components/PreferencesControls";
 import { ui } from "@/components/ui";

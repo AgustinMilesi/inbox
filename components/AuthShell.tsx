@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Headline } from "@/components/Headline";
 import { MailIcon } from "@/components/MailIcon";
 import { PreferencesControls } from "@/components/PreferencesControls";
-import { ui } from "@/components/ui";
 
 export function AuthShell({
   light,
