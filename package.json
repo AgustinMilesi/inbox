@@ -11,7 +11,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "test": "npx --yes tsx --test lib/validation.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
