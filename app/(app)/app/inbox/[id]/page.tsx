@@ -29,49 +29,69 @@ export default async function MessagePage({ params }: { params: Promise<{ id: st
   ].filter((a): a is { status: string; label: string } => Boolean(a));
 
   return (
-    <div className="space-y-10">
-      <Link href="/app/inbox" className={`${ui.muted} text-sm hover:text-rose-400 transition`}>
+    <div className="space-y-8 animate-smooth-in">
+      <Link href="/app/inbox" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-[#5E48E8] hover:underline">
         ← Back to inbox
       </Link>
 
-      <div className="space-y-3">
-        <h1 className="text-4xl font-black text-white leading-tight break-words">{message.subject}</h1>
-        <p className={ui.muted}>{formatDate(message.createdAt)}</p>
-      </div>
-
-      <div className="grid sm:grid-cols-3 gap-6">
-        <div>
-          <p className={ui.label}>From</p>
-          <p className="text-white text-lg break-words">{message.name}</p>
+      <div className="clay-card p-6 sm:p-8 rounded-3xl space-y-6">
+        <div className="space-y-2 border-b border-[#EAE9F6] pb-5">
+          <div className="flex items-center gap-3">
+            <span
+              className={`size-2.5 rounded-full ${
+                message.status === "NEW" ? "bg-[#5E48E8] shadow-[0_0_8px_rgba(94,72,232,0.6)]" : "bg-emerald-500"
+              }`}
+            />
+            <span className="text-xs font-bold uppercase tracking-wider text-[#72729A]">
+              Status: {message.status}
+            </span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-black text-[#18182E] leading-tight break-words">
+            {message.subject}
+          </h1>
+          <p className="text-xs text-[#72729A]">{formatDate(message.createdAt)}</p>
         </div>
-        <div>
-          <p className={ui.label}>Email</p>
-          <p className="text-white text-lg break-all">{message.email}</p>
-        </div>
-        <div>
-          <p className={ui.label}>Sent through</p>
-          <p className="text-white text-lg">{message.form?.name ?? "A form that was deleted"}</p>
-        </div>
-      </div>
 
-      <div className={`${ui.card} p-6`}>
-        <p className="whitespace-pre-wrap break-words text-lg text-slate-100 leading-relaxed">{message.body}</p>
-      </div>
+        <div className="grid sm:grid-cols-3 gap-6 bg-[#F8F9FE] p-5 rounded-2xl border border-[#EAE9F6]">
+          <div>
+            <p className={ui.label}>From</p>
+            <p className="text-[#18182E] text-base font-bold break-words">{message.name}</p>
+          </div>
+          <div>
+            <p className={ui.label}>Email</p>
+            <p className="text-[#18182E] text-base font-bold break-all">{message.email}</p>
+          </div>
+          <div>
+            <p className={ui.label}>Sent through</p>
+            <p className="text-[#18182E] text-base font-bold">{message.form?.name ?? "Default form"}</p>
+          </div>
+        </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        <a href={reply} className={`${ui.button} inline-block`}>Reply by email</a>
-        {actions.map((action) => (
-          <ActionForm key={action.status} action={setMessageStatus} keepValues>
-            <input type="hidden" name="id" value={message.id} />
-            <input type="hidden" name="status" value={action.status} />
-            <SubmitButton variant="ghost" pendingText="...">{action.label}</SubmitButton>
-          </ActionForm>
-        ))}
-        {message.contact && (
-          <Link href={`/app/contacts/${message.contact.id}`} className={ui.ghost}>
-            View contact
-          </Link>
-        )}
+        <div className="p-6 rounded-2xl bg-white border border-[#EAE9F6] shadow-inner">
+          <p className="whitespace-pre-wrap break-words text-base text-[#18182E] leading-relaxed">
+            {message.body}
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3 pt-2">
+          <a href={reply} className={ui.button}>
+            Reply by email
+          </a>
+          {actions.map((action) => (
+            <ActionForm key={action.status} action={setMessageStatus} keepValues>
+              <input type="hidden" name="id" value={message.id} />
+              <input type="hidden" name="status" value={action.status} />
+              <SubmitButton variant="ghost" pendingText="...">
+                {action.label}
+              </SubmitButton>
+            </ActionForm>
+          ))}
+          {message.contact && (
+            <Link href={`/app/contacts/${message.contact.id}`} className={ui.ghost}>
+              View contact profile
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

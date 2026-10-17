@@ -1,7 +1,7 @@
 export function InboxIcon() {
   return (
-    <div className="w-14 h-14 rounded-full bg-rose-400 flex items-center justify-center shadow-lg shadow-rose-400/20">
-      <svg className="w-7 h-7 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#6852F6] to-[#5538EA] flex items-center justify-center shadow-[0_10px_24px_rgba(85,56,234,0.35)] text-white">
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -14,4 +14,3 @@ export function InboxIcon() {
 }
 
 export const MailIcon = InboxIcon;
-

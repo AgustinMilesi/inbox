@@ -1,45 +1,40 @@
-import { NavLinks } from "@/components/NavLinks";
-import { SubmitButton } from "@/components/SubmitButton";
-import { ui } from "@/components/ui";
+import { AppShell } from "@/components/AppShell";
+import type { NavItem } from "@/components/NavLinks";
 import { logoutAction } from "@/app/actions/auth";
 import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db";
+import { getServerTranslations } from "@/lib/i18n-server";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const session = await requireSession();
+  const [session, { t }] = await Promise.all([
+    requireSession(),
+    getServerTranslations(),
+  ]);
+
   const unread = await db.message.count({
     where: { organizationId: session.organization.id, status: "NEW" },
   });
 
+  const navItems: NavItem[] = [
+    { href: "/app", key: "overview", label: t.overview },
+    { href: "/app/inbox", key: "inbox", label: t.inbox, badge: unread },
+    { href: "/app/contacts", key: "contacts", label: t.contacts },
+    { href: "/app/forms", key: "forms", label: t.forms },
+    { href: "/app/settings", key: "settings", label: t.settings },
+  ];
+
   return (
-    <div className="min-h-screen md:grid md:grid-cols-[260px_1fr]">
-      <aside className="border-b md:border-b-0 md:border-r border-white/10 p-6 md:p-8 flex flex-col gap-6 md:gap-10">
-        <div>
-          <p className={ui.label}>Workspace</p>
-          <p className="text-white text-xl font-black leading-tight">{session.organization.name}</p>
-        </div>
-
-        <NavLinks
-          items={[
-            { href: "/app", label: "Overview" },
-            { href: "/app/inbox", label: "Inbox", badge: unread },
-            { href: "/app/contacts", label: "Contacts" },
-            { href: "/app/forms", label: "Forms" },
-            { href: "/app/settings", label: "Settings" },
-          ]}
-        />
-
-        <div className="md:mt-auto space-y-3">
-          <p className="text-slate-400 text-sm break-all">{session.user.email}</p>
-          <form action={logoutAction}>
-            <SubmitButton variant="ghost" pendingText="Signing out...">
-              Sign out
-            </SubmitButton>
-          </form>
-        </div>
-      </aside>
-
-      <main className="p-6 md:p-12 w-full max-w-5xl">{children}</main>
-    </div>
+    <AppShell
+      organizationName={session.organization.name}
+      userEmail={session.user.email}
+      workspaceLabel={t.workspace}
+      signOutLabel={t.signOut}
+      signingOutLabel={t.signingOut}
+      settingsLabel={t.settings}
+      navItems={navItems}
+      logoutAction={logoutAction}
+    >
+      {children}
+    </AppShell>
   );
 }

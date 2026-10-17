@@ -18,7 +18,7 @@ export default async function RegisterPage() {
           <p>You get a workspace and your first contact form right away.</p>
           <p>
             Already have an account?{" "}
-            <Link href="/login" className="text-white hover:text-rose-400 transition">
+            <Link href="/login" className="text-[#5E48E8] hover:text-[#4A2FE0] font-bold transition">
               Sign in
             </Link>
             .

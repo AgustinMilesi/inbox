@@ -20,8 +20,8 @@ export default async function PublicFormPage({
   if (!form || !form.active) notFound();
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-6 md:p-12">
-      <div className="w-full max-w-2xl space-y-8">
+    <main className="min-h-screen flex items-center justify-center p-6 md:p-12 animate-smooth-in">
+      <div className="w-full max-w-xl clay-card p-8 sm:p-10 rounded-3xl space-y-6">
         <Headline light={["Send a message to"]} bold={`${form.organization.name}.`} />
         <PublicForm publicId={publicId} orgName={form.organization.name} />
       </div>

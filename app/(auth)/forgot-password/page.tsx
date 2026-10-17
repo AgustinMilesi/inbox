@@ -14,7 +14,7 @@ export default function ForgotPasswordPage() {
         <>
           <p>Type your email and we&apos;ll send you a link that works for one hour.</p>
           <p>
-            <Link href="/login" className="text-white hover:text-rose-400 transition">
+            <Link href="/login" className="text-[#5E48E8] hover:text-[#4A2FE0] font-bold transition">
               Back to sign in
             </Link>
           </p>

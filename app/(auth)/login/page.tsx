@@ -16,7 +16,7 @@ export default async function LoginPage() {
       side={
         <p>
           New here?{" "}
-          <Link href="/register" className="text-white hover:text-rose-400 transition">
+          <Link href="/register" className="text-[#5E48E8] hover:text-[#4A2FE0] font-bold transition">
             Create an account
           </Link>
           .

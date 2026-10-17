@@ -61,7 +61,7 @@ export function LoginForm() {
         <button type="submit" disabled={isSubmitting} className={ui.button}>
           {isSubmitting ? "Signing in..." : "Sign in"}
         </button>
-        <Link href="/forgot-password" className={`${ui.muted} text-sm hover:text-rose-400 transition`}>
+        <Link href="/forgot-password" className={`${ui.muted} text-sm hover:text-[#5E48E8] transition`}>
           Forgot your password?
         </Link>
       </div>

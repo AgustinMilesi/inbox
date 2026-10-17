@@ -41,7 +41,7 @@ export function ApiKeyCreator() {
       {key && (
         <div className={`${ui.card} p-4 space-y-3`}>
           <p className={ui.label}>Your new key, shown only once</p>
-          <code className="block break-all text-rose-400 text-sm">{key}</code>
+          <code className="block break-all text-[#5E48E8] font-mono font-bold text-sm bg-[#F8F9FE] border border-[#EAE9F6] p-3 rounded-xl">{key}</code>
           <div className="flex gap-3">
             <CopyButton text={key} />
             <button type="button" className={ui.ghost} onClick={() => setKey(null)}>
