@@ -79,10 +79,10 @@ export default function Home() {
                 <div className="flex items-center gap-2.5">
                   <div className="size-8 rounded-xl bg-gradient-to-br from-[#6852F6] to-[#5538EA] flex items-center justify-center text-white shadow-xs">
                     <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-4l-2 3H10l-2-3H4" />
                     </svg>
                   </div>
-                  <span className="font-black text-sm text-[#18182E]">Financial CRM · Overview</span>
+                  <span className="font-black text-sm text-[#18182E]">Customer CRM · Inbox Overview</span>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -91,10 +91,11 @@ export default function Home() {
                       <circle cx="11" cy="11" r="8" strokeWidth="2" />
                       <line x1="21" y1="21" x2="16.65" y2="16.65" strokeWidth="2" strokeLinecap="round" />
                     </svg>
-                    <span>Search contacts...</span>
+                    <span>Search messages, contacts...</span>
                   </div>
-                  <span className="px-2.5 py-1 rounded-xl bg-[#F8F9FE] border border-[#EAE9F6] text-[11px] font-bold text-[#5E48E8]">
-                    Live View
+                  <span className="px-2.5 py-1 rounded-xl bg-[#F8F9FE] border border-[#EAE9F6] text-[11px] font-bold text-[#5E48E8] flex items-center gap-1.5">
+                    <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Live Workspace
                   </span>
                 </div>
               </div>
@@ -106,37 +107,39 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="size-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <div className="size-3.5 rounded-full bg-white/40" />
+                        <svg className="size-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
                       </div>
-                      <span className="text-xs font-mono tracking-widest text-white/90">•••• 5610</span>
+                      <span className="text-xs font-mono tracking-wider text-white/90">workspace: am-support</span>
                     </div>
-                    <span className="text-xs font-bold text-white/90 flex items-center gap-1">
-                       Pay
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-white/90 bg-white/15 px-2 py-0.5 rounded-full border border-white/20">
+                      Team Pro
                     </span>
                   </div>
 
                   <div className="my-5">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">Total Revenue</p>
-                    <p className="text-3xl font-black text-white tracking-tight">$24,500.00</p>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-white/70">Total Customer Inquiries</p>
+                    <p className="text-3xl font-black text-white tracking-tight">1,842</p>
                   </div>
 
                   <div className="flex items-center justify-between text-[11px] text-white/80 pt-2 border-t border-white/20">
                     <div>
-                      <span className="block text-[9px] uppercase tracking-wider text-white/60">Card Holder</span>
+                      <span className="block text-[9px] uppercase tracking-wider text-white/60">Workspace Admin</span>
                       <span className="font-bold">Agustín Milesi</span>
                     </div>
                     <div>
-                      <span className="block text-[9px] uppercase tracking-wider text-white/60">Expires</span>
-                      <span className="font-bold">08/28</span>
+                      <span className="block text-[9px] uppercase tracking-wider text-white/60">Avg First Response</span>
+                      <span className="font-bold text-emerald-300">⚡ 4m 12s</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Efficiency Gauge Card (Span 5) */}
+                {/* Resolution Gauge Card (Span 5) */}
                 <div className="sm:col-span-5 clay-card p-5 rounded-2xl flex flex-col items-center justify-between bg-white border border-[#EAE9F6]">
                   <div className="w-full flex items-center justify-between">
-                    <span className="text-xs font-bold text-[#18182E]">Efficiency</span>
-                    <span className="text-[10px] text-[#72729A] font-bold">+10%</span>
+                    <span className="text-xs font-bold text-[#18182E]">Resolution Rate</span>
+                    <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200">+12%</span>
                   </div>
 
                   {/* SVG Circular Progress Ring */}
@@ -151,7 +154,7 @@ export default function Home() {
                       />
                       <path
                         className="text-[#5E48E8]"
-                        strokeDasharray="85, 100"
+                        strokeDasharray="94, 100"
                         strokeWidth="3.5"
                         strokeLinecap="round"
                         stroke="currentColor"
@@ -160,29 +163,29 @@ export default function Home() {
                       />
                     </svg>
                     <div className="absolute flex flex-col items-center justify-center">
-                      <span className="text-base font-black text-[#18182E]">$5,200</span>
-                      <span className="text-[9px] font-bold text-[#5E48E8] bg-[#EEF0FA] px-1.5 py-0.5 rounded-full">+10%</span>
+                      <span className="text-base font-black text-[#18182E]">94%</span>
+                      <span className="text-[9px] font-bold text-[#5E48E8] bg-[#EEF0FA] px-1.5 py-0.5 rounded-full">Resolved</span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3 text-[10px] text-[#72729A]">
                     <span className="flex items-center gap-1">
-                      <span className="size-2 rounded-full bg-[#5E48E8]" /> Earned
+                      <span className="size-2 rounded-full bg-[#5E48E8]" /> Closed (1.7k)
                     </span>
                     <span className="flex items-center gap-1">
-                      <span className="size-2 rounded-full bg-[#E2E1F4]" /> Spend
+                      <span className="size-2 rounded-full bg-[#E2E1F4]" /> Open (112)
                     </span>
                   </div>
                 </div>
 
-                {/* Exchange Rates Curve Card (Span 7) */}
+                {/* Inbound Message Flow Wave Card (Span 7) */}
                 <div className="sm:col-span-7 clay-card p-5 rounded-2xl bg-white border border-[#EAE9F6] space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-bold text-[#18182E] block">Message Activity</span>
-                      <span className="text-[10px] text-[#72729A]">Monthly conversion trends</span>
+                      <span className="text-xs font-bold text-[#18182E] block">Inbound Message Flow</span>
+                      <span className="text-[10px] text-[#72729A]">Weekly lead & contact velocity</span>
                     </div>
-                    <span className="text-[11px] font-bold text-[#5E48E8]">USD · ARS</span>
+                    <span className="text-[11px] font-bold text-[#5E48E8]">Avg 142 / day</span>
                   </div>
 
                   {/* Vector Wave Graph */}
@@ -209,41 +212,44 @@ export default function Home() {
                   </div>
 
                   <div className="flex justify-between text-[10px] text-[#72729A] font-medium pt-1">
-                    <span>Mar</span>
-                    <span>Apr</span>
-                    <span>May</span>
-                    <span>Jun</span>
+                    <span>Week 1</span>
+                    <span>Week 2</span>
+                    <span>Week 3</span>
+                    <span>Week 4</span>
                   </div>
                 </div>
 
-                {/* Recent Activities Mini List (Span 5) */}
+                {/* Recent Inbound Leads Mini List (Span 5) */}
                 <div className="sm:col-span-5 clay-card p-5 rounded-2xl bg-white border border-[#EAE9F6] space-y-3">
-                  <span className="text-xs font-bold text-[#18182E] block">Recent Activities</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#18182E] block">Recent Inbound Leads</span>
+                    <span className="text-[10px] text-[#5E48E8] font-bold">Inbox (8 unread)</span>
+                  </div>
                   <div className="space-y-2 text-xs">
                     <div className="flex items-center justify-between p-2 rounded-xl bg-[#F8F9FE] border border-[#EAE9F6]">
                       <div className="flex items-center gap-2">
                         <span className="size-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px]">
-                          ↓
+                          ✉
                         </span>
                         <div>
-                          <p className="font-bold text-[#18182E] text-[11px]">New Lead</p>
-                          <p className="text-[9px] text-[#72729A]">Philip Kelley</p>
+                          <p className="font-bold text-[#18182E] text-[11px]">Philip Kelley</p>
+                          <p className="text-[9px] text-[#72729A]">Sales inquiry · Web Form</p>
                         </div>
                       </div>
-                      <span className="font-bold text-emerald-600 text-[11px]">+$450.51</span>
+                      <span className="font-bold text-emerald-600 text-[10px] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">New</span>
                     </div>
 
                     <div className="flex items-center justify-between p-2 rounded-xl bg-[#F8F9FE] border border-[#EAE9F6]">
                       <div className="flex items-center gap-2">
-                        <span className="size-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-[10px]">
-                          ↑
+                        <span className="size-6 rounded-lg bg-[#EEF0FA] text-[#5E48E8] flex items-center justify-center font-bold text-[10px]">
+                          ⚡
                         </span>
                         <div>
-                          <p className="font-bold text-[#18182E] text-[11px]">ERP Sync</p>
-                          <p className="text-[9px] text-[#72729A]">Invoice #1042</p>
+                          <p className="font-bold text-[#18182E] text-[11px]">ERP Bridge Sync</p>
+                          <p className="text-[9px] text-[#72729A]">Acme Corp · Customer #1042</p>
                         </div>
                       </div>
-                      <span className="font-bold text-rose-600 text-[11px]">-$5.00</span>
+                      <span className="font-bold text-[#5E48E8] text-[10px] bg-white px-2 py-0.5 rounded-full border border-[#EAE9F6]">Synced</span>
                     </div>
                   </div>
                 </div>
