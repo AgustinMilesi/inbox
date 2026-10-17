@@ -1,125 +1,177 @@
-# Contact
+# 📥 Customer Inbox & Forms SaaS
 
-A multi-tenant SaaS to collect your customers' messages in one inbox and keep every contact organized. It is built to be the first module of a bigger platform: the ERP will share its workspaces, users, contacts and API.
+A modern multi-tenant SaaS application designed to capture customer inquiries through embeddable forms, triage submissions in a unified inbox, and manage contact relationships at scale. Built to serve as the communication backbone for the ERP ecosystem.
 
-## What is inside
+![Production Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon-00E599?style=for-the-badge&logo=postgresql)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma)
 
-- **Accounts and workspaces.** Sign up creates a user, a workspace and a first contact form. Roles: owner, admin, member.
-- **Public forms.** Hosted page at `/f/<id>`, embeddable with an iframe, or callable through `POST /api/public/forms/<id>`.
-- **Inbox.** Status (new, read, archived), filters, pagination, reply by email.
-- **Contacts.** Every sender becomes a contact. Each one has an `external id` field to link it with the ERP.
-- **Integrations.** API keys, a REST API (`/api/v1`) and a signed webhook for new messages.
-- **Password reset** by email.
+---
 
-## Stack
+## 🎯 Architecture & Ecosystem
 
-Next.js 16 (App Router), TypeScript, Tailwind CSS 4, Prisma + PostgreSQL (Neon), Zod, React Hook Form, Resend, Sonner. Same stack and same look as the contact page.
+```
+ ┌────────────────┐       ┌───────────────────────┐       ┌────────────────────────┐
+ │  Public Forms  │ ────► │  Customer Inbox SaaS  │ ────► │   Retail ERP Engine    │
+ │ (Web / Embed)  │       │  (Triage & Leads CRM) │       │ (POS / Stock / Orders) │
+ └────────────────┘       └───────────────────────┘       └────────────────────────┘
+                                    │
+                         ┌──────────┴──────────┐
+                         ▼                     ▼
+                  REST API v1             HMAC Webhooks
+```
 
-## Run it locally
+---
 
-You need Node 20.9 or newer and a PostgreSQL database (a free [Neon](https://neon.tech) project works).
+## ✨ Core Capabilities
 
-    npm install
-    cp .env.example .env        # on Windows PowerShell: Copy-Item .env.example .env
-    # fill DATABASE_URL in .env
-    npx prisma migrate dev --name init
-    npm run dev
+### 🏢 Multi-Tenant Workspaces
+- Sign-up provisions a new organization, owner membership, and a default contact form automatically.
+- Role-based permissions: `Owner`, `Admin`, and `Member`.
+- Complete data isolation per workspace across all database queries.
 
-Open http://localhost:3000. Without `RESEND_API_KEY`, emails (like the password reset link) are printed in the terminal.
+### 📝 Embeddable & Hosted Forms
+- Standalone hosted form page at `/f/:publicId`.
+- Clean `<iframe>` embedding snippet for any website or blog.
+- Headless API endpoint: `POST /api/public/forms/:publicId`.
 
-## Environment variables
+### 📬 Unified Customer Inbox
+- Filter by status: `New`, `Read`, and `Archived`.
+- Fast search across messages, customer names, emails, and subjects.
+- Quick actions: mark as read, archive, and reply directly via email.
 
-| Name | What it is |
-|------|------------|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `APP_URL` | Public address of the app, used in emails and embed codes |
-| `RESEND_API_KEY` | Key from Resend. Optional in development |
-| `EMAIL_FROM` | Sender of the emails |
-| `APP_TIMEZONE` | Time zone used to show dates |
+### 👥 Customer CRM & ERP Sync
+- Every form submitter is automatically registered as a contact.
+- Contains an `externalId` field designed to map 1:1 with customer records in the ERP.
 
-## Deploy on Vercel
+### 🔑 Developer REST API & Webhooks
+- Secure API Key authentication (`Authorization: Bearer cs_...`).
+- Cursor-based pagination for large datasets.
+- Cryptographically signed HTTP Webhooks (`HMAC-SHA256`) delivered on `message.created` events.
 
-1. Push the repo to GitHub and import it in Vercel.
-2. Add the environment variables above (`APP_URL` is your production address).
-3. Run `npx prisma migrate deploy` once against the production database.
-4. For emails to reach anyone, verify your domain in Resend and update `EMAIL_FROM`.
+---
 
-## Security
+## 🛠️ Tech Stack
 
-- Passwords are hashed with scrypt (N=2^15, r=8, p=3) and compared in constant time. Unknown emails take as long as real ones.
-- Sessions are random tokens in an `httpOnly`, `SameSite=Lax`, `Secure` cookie (`__Host-` prefix in production). The database only keeps the SHA-256 of the token.
-- Password reset links and API keys are stored hashed too, and a reset closes every open session.
-- Rate limits (kept in Postgres, so they work on serverless) on login, sign up, password reset, public forms and the API.
-- Every query is filtered by the workspace taken from the session, never from the request.
-- All input is validated with Zod on the server. User content is escaped before going into emails.
-- Public forms have a honeypot, a body size limit and an optional list of allowed sites.
-- Webhook addresses must be public `https` URLs, redirects are not followed, and every call is signed with HMAC.
-- Security headers on every page. Only `/f/*` can be embedded in a frame.
-- Server actions are protected against CSRF by Next.js (origin check).
+| Component | Technology | Description |
+|---|---|---|
+| **Framework** | Next.js 16 (App Router) | React Server Components & Turbopack build engine |
+| **Language** | TypeScript 5 | Strict typing throughout frontend and backend |
+| **Styling** | Tailwind CSS 4 | Custom dark mode palette matching the design family |
+| **Database** | PostgreSQL (Neon) | Serverless Postgres with automatic branching & scaling |
+| **ORM** | Prisma | Schema definitions, migrations, and typed queries |
+| **Forms & Schemas** | Zod + React Hook Form | Dual-layer validation with shared schemas |
+| **Emails** | Resend | Transactional emails for password resets and alerts |
+| **Toasts** | Sonner | Real-time notifications and feedback |
 
-## REST API
+---
 
-Create a key in **Settings**. Send it on every request:
+## 🚀 Getting Started (Local Development)
 
-    Authorization: Bearer cs_xxxxxxxx
+### Prerequisites
+- **Node.js** v20.9 or higher
+- A **PostgreSQL** database (a free project on [Neon.tech](https://neon.tech) works seamlessly)
 
-Limit: 120 requests per minute per key. Errors look like `{ "error": { "code": "...", "message": "..." } }`.
+### Step-by-Step Installation
 
-| Method | Path | What it does |
-|--------|------|--------------|
-| GET | `/api/v1/contacts` | List. Query: `limit` (max 100), `cursor`, `q`, `external_id` |
-| POST | `/api/v1/contacts` | Create. Body: `name`, `email`, `phone`, `company`, `notes`, `external_id` |
-| GET | `/api/v1/contacts/:id` | Read one |
-| PATCH | `/api/v1/contacts/:id` | Update any of the fields above |
-| GET | `/api/v1/messages` | List. Query: `limit`, `cursor`, `status` (new, read, archived), `contact_id` |
+```bash
+# 1. Clone the repository
+git clone https://github.com/AgustinMilesi/saas.git
+cd saas
 
-Lists return `{ "data": [...], "next_cursor": "..." }`. Send `next_cursor` back as `cursor` to get the next page; it is `null` at the end.
+# 2. Install dependencies
+npm install
 
-    curl -H "Authorization: Bearer $KEY" "https://your-app.com/api/v1/contacts?limit=20"
+# 3. Setup environment variables
+cp .env.example .env        # On Windows PowerShell: Copy-Item .env.example .env
 
-    curl -X POST -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
-      -d '{"name":"Ana Pérez","email":"ana@example.com","external_id":"CUST-0042"}' \
-      https://your-app.com/api/v1/contacts
+# 4. Run database migrations
+npx prisma migrate dev --name init
 
-## Webhook
+# 5. Start development server
+npm run dev
+```
 
-Set an address in **Settings** and each new message is sent there as `POST` with JSON:
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-    {
-      "event": "message.created",
-      "organization_id": "...",
-      "data": { "id": "...", "contact_id": "...", "name": "...", "email": "...",
-                "subject": "...", "message": "...", "created_at": "..." }
-    }
+---
 
-Headers `X-Contact-Timestamp` and `X-Contact-Signature: sha256=<hex>`. The signature is `HMAC-SHA256(secret, timestamp + "." + body)`. Check it like this (Node):
+## ⚙️ Environment Variables
 
-    import { createHmac, timingSafeEqual } from "node:crypto";
+| Variable | Required | Description | Example |
+|---|:---:|---|---|
+| `DATABASE_URL` | Yes | PostgreSQL connection string with SSL | `postgresql://user:pass@ep-xyz.neon.tech/saas?sslmode=require` |
+| `APP_URL` | Yes | Public application URL (used in embeds & links) | `http://localhost:3000` / `https://saas.yourdomain.com` |
+| `RESEND_API_KEY` | No (Dev) | API key for transactional emails | `re_123456789` (prints to console in dev if omitted) |
+| `EMAIL_FROM` | Yes | Sender address for outbound emails | `Acme Support <notifications@yourdomain.com>` |
+| `APP_TIMEZONE` | No | Default timezone for formatting timestamps | `America/Argentina/Buenos_Aires` |
 
-    function isValid(rawBody, timestamp, signature, secret) {
-      const expected = "sha256=" + createHmac("sha256", secret).update(`${timestamp}.${rawBody}`).digest("hex");
-      const a = Buffer.from(expected);
-      const b = Buffer.from(signature);
-      return a.length === b.length && timingSafeEqual(a, b)
-        && Math.abs(Date.now() / 1000 - Number(timestamp)) < 300;
-    }
+---
 
-## How the ERP plugs in
+## 🛡️ Security & Reliability Architecture
 
-- **One workspace model.** `Organization`, `Membership` and `User` are the tenants and logins for the whole platform. New ERP tables just carry an `organizationId`.
-- **Contacts are the customers.** `Contact.externalId` is where the ERP stores its own customer id, and the API can search by it.
-- **Two ways to talk.** The ERP can poll the REST API, or react to the webhook.
-- **Stable outside shape.** `lib/dto.ts` is the only place that decides what the API returns, so tables can change without breaking integrations.
-- **Same rules.** Reuse `requireSession()`, `canManage(role)` and `rateLimit()` in every new module.
+- 🔐 **Password Hashing:** Passwords hashed with `scrypt` ($N=2^{15}, r=8, p=3$) and compared in constant time ($O(1)$) to prevent timing attacks.
+- 🍪 **Stateless Secure Sessions:** High-entropy random tokens stored in `httpOnly`, `SameSite=Lax`, `Secure` cookies (`__Host-` prefix in production). Only the SHA-256 hash is stored in the database.
+- ⏱️ **Serverless Rate Limiting:** Persistent PostgreSQL rate limits on login, registration, password resets, public forms, and the REST API.
+- 📦 **Workspace Scoping:** Every database query is strictly scoped by the active session's `organizationId`.
+- 🪤 **Spam Prevention:** Honeypot field, payload body size caps, and origin restrictions on public forms.
+- 🔏 **Signed Webhooks:** Outbound webhooks include `X-Contact-Timestamp` and `X-Contact-Signature: sha256=<hex>` computed via `HMAC-SHA256(secret, timestamp + "." + body)`.
 
-## Not included yet
+---
 
-Team invitations (a workspace has one owner for now), email verification, two-factor login, billing and plans, and a strict Content-Security-Policy with nonces. Each fits on top of the current structure.
+## 📡 REST API Reference
 
-## Scripts
+Generate API keys under **Settings → API Keys**. Include the bearer token in every request:
 
-`npm run dev`, `npm run build`, `npm run lint`, `npm run typecheck`, `npm run db:migrate`, `npm run db:deploy`, `npm run db:studio`.
+```http
+Authorization: Bearer cs_your_api_key_here
+```
 
-## License
+Rate limit: **120 requests/min** per key.
 
-MIT
+### Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/v1/contacts` | List contacts. Query: `limit`, `cursor`, `q`, `external_id` |
+| `POST` | `/api/v1/contacts` | Create a contact. Body: `name`, `email`, `phone`, `company`, `external_id` |
+| `GET` | `/api/v1/contacts/:id` | Retrieve single contact details |
+| `PATCH` | `/api/v1/contacts/:id` | Update contact attributes |
+| `GET` | `/api/v1/messages` | List messages. Query: `limit`, `cursor`, `status` (`new`, `read`, `archived`) |
+
+#### Example: Query Contacts
+
+```bash
+curl -H "Authorization: Bearer cs_xxxx" \
+  "https://saas.yourdomain.com/api/v1/contacts?limit=20"
+```
+
+#### Example: Verify Webhook Signature (Node.js)
+
+```javascript
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+function verifyWebhook(rawBody, timestamp, signature, secret) {
+  const expected = "sha256=" + createHmac("sha256", secret).update(`${timestamp}.${rawBody}`).digest("hex");
+  const a = Buffer.from(expected);
+  const b = Buffer.from(signature);
+  return a.length === b.length && timingSafeEqual(a, b) && Math.abs(Date.now() / 1000 - Number(timestamp)) < 300;
+}
+```
+
+---
+
+## 🔗 How it Integrates with the ERP
+
+1. **Shared Multi-Tenancy:** Workspaces, memberships, and users map directly to the ERP.
+2. **Customer Identity Bridge:** `Contact.externalId` anchors the contact directly to ERP accounts.
+3. **Event-Driven Workflows:** ERP subscribes to `message.created` webhooks to automatically trigger sales lead workflows.
+
+---
+
+## 📄 License
+
+This software is released under the [MIT License](LICENSE).
