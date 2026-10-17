@@ -103,7 +103,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 | Variable | Required | Description | Example |
 |---|:---:|---|---|
-| `DATABASE_URL` | Yes | PostgreSQL connection string with SSL | `postgresql://user:pass@ep-xyz.neon.tech/saas?sslmode=require` |
+| `DATABASE_URL` | Yes | Neon pooled connection string (`-pooler.`) for Next.js runtime & queries | `postgresql://user:pass@ep-xyz-pooler.region.aws.neon.tech/saas?sslmode=require` |
+| `DIRECT_URL` | Yes | Neon direct unpooled connection string for Prisma migrations & schema changes | `postgresql://user:pass@ep-xyz.region.aws.neon.tech/saas?sslmode=require` |
 | `APP_URL` | Yes | Public application URL (used in embeds & links) | `http://localhost:3000` / `https://saas.yourdomain.com` |
 | `RESEND_API_KEY` | No (Dev) | API key for transactional emails | `re_123456789` (prints to console in dev if omitted) |
 | `EMAIL_FROM` | Yes | Sender address for outbound emails | `Acme Support <notifications@yourdomain.com>` |
@@ -164,14 +165,24 @@ function verifyWebhook(rawBody, timestamp, signature, secret) {
 
 ---
 
-## 🔗 How it Integrates with the ERP
+## 🌐 Complete Ecosystem Suite
 
-1. **Shared Multi-Tenancy:** Workspaces, memberships, and users map directly to the ERP.
-2. **Customer Identity Bridge:** `Contact.externalId` anchors the contact directly to ERP accounts.
-3. **Event-Driven Workflows:** ERP subscribes to `message.created` webhooks to automatically trigger sales lead workflows.
+This SaaS project is an integral component of a unified 3-tier enterprise architecture:
+
+| Component | Repository | Role & Focus |
+|---|---|---|
+| **Retail ERP & POS** | [AgustinMilesi/erp](https://github.com/AgustinMilesi/erp) | Core business operating system, inventory tracking, cash shifts, thermal ticket printing, and checkout POS. |
+| **Customer Inbox SaaS** | [AgustinMilesi/saas](https://github.com/AgustinMilesi/saas) | Multi-tenant customer inbox, embeddable contact forms, contact directory, and CRM leads bridge. *(This Repository)* |
+| **Contact Page Portal** | [AgustinMilesi/contact-page](https://github.com/AgustinMilesi/contact-page) | High-intent lead generation portal, anti-spam validation gateway, and email delivery dispatch. |
+
+### How It Connects:
+1. **Unified Multi-Tenancy:** Workspaces, memberships, and users share compatible identity structures with the ERP.
+2. **Customer Identity Bridge:** `Contact.externalId` anchors the contact directly to ERP customer accounts and debt ledgers.
+3. **Event-Driven Webhooks:** The ERP subscribes to `message.created` HMAC-SHA256 signed webhooks to trigger sales lead and follow-up workflows.
 
 ---
 
 ## 📄 License
 
 This software is released under the [MIT License](LICENSE).
+
