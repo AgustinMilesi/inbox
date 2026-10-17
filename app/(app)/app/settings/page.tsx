@@ -3,6 +3,7 @@ import { ActionForm } from "@/components/ActionForm";
 import { ApiKeyCreator } from "@/components/ApiKeyCreator";
 import { CopyButton } from "@/components/CopyButton";
 import { PageTitle } from "@/components/Headline";
+import { PreferencesBlock } from "@/components/PreferencesBlock";
 import { SubmitButton } from "@/components/SubmitButton";
 import { ui } from "@/components/ui";
 import { revokeApiKey, rotateWebhookSecret, saveSettings } from "@/app/actions/dashboard";
@@ -42,6 +43,9 @@ export default async function SettingsPage() {
         <PageTitle light="Your" bold="settings." />
         <p className="text-sm text-[#72729A] font-medium">Configure workspace parameters, webhooks, and developer API keys.</p>
       </div>
+
+      {/* Visual Preferences Block */}
+      <PreferencesBlock />
 
       {/* Workspace Settings Card */}
       <section className="clay-card p-6 sm:p-8 rounded-3xl space-y-6">
