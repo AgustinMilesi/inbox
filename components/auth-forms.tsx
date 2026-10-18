@@ -15,6 +15,8 @@ import {
 import type { ActionResult } from "@/lib/action";
 import { forgotSchema, loginSchema, registerSchema, resetSchema } from "@/lib/validation";
 import { ui } from "@/components/ui";
+import { SocialAuthButtons } from "@/components/SocialAuthButtons";
+import { OAuthErrorNotice } from "@/components/OAuthErrorNotice";
 
 function Field({ error, children }: { error?: string; children: React.ReactNode }) {
   return (
@@ -50,22 +52,26 @@ export function LoginForm() {
   } = useForm<z.infer<typeof loginSchema>>({ resolver: zodResolver(loginSchema) });
 
   return (
-    <form onSubmit={handleSubmit(async (data) => handle(await loginAction(data)))} className="space-y-2">
-      <Field error={errors.email?.message}>
-        <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
-      </Field>
-      <Field error={errors.password?.message}>
-        <input {...register("password")} type="password" placeholder="Password" aria-label="Password" autoComplete="current-password" className={ui.input} />
-      </Field>
-      <div className="pt-6 flex flex-wrap items-center gap-6">
-        <button type="submit" disabled={isSubmitting} className={ui.button}>
-          {isSubmitting ? "Signing in..." : "Sign in"}
-        </button>
-        <Link href="/forgot-password" className={`${ui.muted} text-sm hover:text-[#5E48E8] transition`}>
-          Forgot your password?
-        </Link>
-      </div>
-    </form>
+    <div className="space-y-4">
+      <OAuthErrorNotice />
+      <SocialAuthButtons mode="login" />
+      <form onSubmit={handleSubmit(async (data) => handle(await loginAction(data)))} className="space-y-2 pt-2">
+        <Field error={errors.email?.message}>
+          <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
+        </Field>
+        <Field error={errors.password?.message}>
+          <input {...register("password")} type="password" placeholder="Password" aria-label="Password" autoComplete="current-password" className={ui.input} />
+        </Field>
+        <div className="pt-6 flex flex-wrap items-center gap-6">
+          <button type="submit" disabled={isSubmitting} className={ui.button}>
+            {isSubmitting ? "Signing in..." : "Sign in"}
+          </button>
+          <Link href="/forgot-password" className={`${ui.muted} text-sm hover:text-[#5E48E8] transition`}>
+            Forgot your password?
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 }
 
@@ -78,25 +84,29 @@ export function RegisterForm() {
   } = useForm<z.infer<typeof registerSchema>>({ resolver: zodResolver(registerSchema) });
 
   return (
-    <form onSubmit={handleSubmit(async (data) => handle(await registerAction(data)))} className="space-y-2">
-      <Field error={errors.name?.message}>
-        <input {...register("name")} placeholder="Your name" aria-label="Your name" autoComplete="name" className={ui.input} />
-      </Field>
-      <Field error={errors.organization?.message}>
-        <input {...register("organization")} placeholder="Company or team name" aria-label="Company or team name" autoComplete="organization" className={ui.input} />
-      </Field>
-      <Field error={errors.email?.message}>
-        <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
-      </Field>
-      <Field error={errors.password?.message}>
-        <input {...register("password")} type="password" placeholder="Password (10 characters or more)" aria-label="Password" autoComplete="new-password" className={ui.input} />
-      </Field>
-      <div className="pt-6">
-        <button type="submit" disabled={isSubmitting} className={ui.button}>
-          {isSubmitting ? "Creating..." : "Create account"}
-        </button>
-      </div>
-    </form>
+    <div className="space-y-4">
+      <OAuthErrorNotice />
+      <SocialAuthButtons mode="register" />
+      <form onSubmit={handleSubmit(async (data) => handle(await registerAction(data)))} className="space-y-2 pt-2">
+        <Field error={errors.name?.message}>
+          <input {...register("name")} placeholder="Your name" aria-label="Your name" autoComplete="name" className={ui.input} />
+        </Field>
+        <Field error={errors.organization?.message}>
+          <input {...register("organization")} placeholder="Company or team name" aria-label="Company or team name" autoComplete="organization" className={ui.input} />
+        </Field>
+        <Field error={errors.email?.message}>
+          <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
+        </Field>
+        <Field error={errors.password?.message}>
+          <input {...register("password")} type="password" placeholder="Password (10 characters or more)" aria-label="Password" autoComplete="new-password" className={ui.input} />
+        </Field>
+        <div className="pt-6">
+          <button type="submit" disabled={isSubmitting} className={ui.button}>
+            {isSubmitting ? "Creating..." : "Create account"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
