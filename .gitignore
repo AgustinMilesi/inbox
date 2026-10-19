@@ -46,3 +46,7 @@ ehthumbs.db
 # === Prisma local ===
 prisma/*.db
 prisma/*.db-journal
+
+# Local agent & skills
+.agents/
+skills-lock.json
