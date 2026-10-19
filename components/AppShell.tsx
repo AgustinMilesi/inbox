@@ -170,6 +170,10 @@ export function AppShell({
             <span className="text-[#18182E] font-black text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
               {organizationName}
             </span>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#F0EEFF] text-[#5E48E8] border border-[#DDD8FE]">
+              <span className="size-1.5 rounded-full bg-[#5E48E8] animate-pulse" />
+              Demo / Invitado
+            </span>
           </div>
         </div>
 

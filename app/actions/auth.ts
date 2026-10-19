@@ -99,6 +99,58 @@ export async function loginAction(input: unknown): Promise<ActionResult> {
   return ok(undefined, { redirectTo: "/app" });
 }
 
+export async function guestLoginAction(): Promise<ActionResult> {
+  let user = await db.user.findFirst({
+    where: {
+      memberships: {
+        some: {
+          organization: {
+            messages: { some: {} },
+          },
+        },
+      },
+    },
+    select: { id: true },
+  });
+
+  if (!user) {
+    user = await db.user.findFirst({ select: { id: true } });
+  }
+
+  if (!user) {
+    const passwordHash = await hashPassword("GuestDemo2026!");
+    user = await db.user.create({
+      data: {
+        name: "Invitado Demo",
+        email: "demo@saas-am.vercel.app",
+        passwordHash,
+        memberships: {
+          create: {
+            role: "OWNER",
+            organization: {
+              create: {
+                name: "AgustinMilesi Demo Workspace",
+                slug: slugify("AgustinMilesi Demo Workspace"),
+                notifyEmail: "demo@saas-am.vercel.app",
+                forms: {
+                  create: {
+                    name: "Website contact form",
+                    publicId: newPublicId(),
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      select: { id: true },
+    });
+  }
+
+  await createSession(user.id);
+  return ok("Acceso demo activado", { redirectTo: "/app" });
+}
+
 export async function logoutAction() {
   await destroySession();
   redirect("/login");

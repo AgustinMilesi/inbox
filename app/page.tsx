@@ -62,6 +62,15 @@ export default function Home() {
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Link
+                href="/demo"
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#6852F6] to-[#5538EA] hover:from-[#5A43EE] hover:to-[#4A2FE0] text-white font-black text-sm shadow-[0_8px_20px_rgba(94,72,232,0.35)] transition flex items-center gap-2 group"
+              >
+                <span>✨ Entrar como Invitado</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-full">
+                  1-Click Demo
+                </span>
+              </Link>
               <Link href="/register" className={ui.button}>
                 Create Free Workspace
               </Link>
