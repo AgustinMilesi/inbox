@@ -55,20 +55,24 @@ export function LoginForm() {
     <div className="space-y-4">
       <OAuthErrorNotice />
       <SocialAuthButtons mode="login" />
-      <form onSubmit={handleSubmit(async (data) => handle(await loginAction(data)))} className="space-y-2 pt-2">
+      <form onSubmit={handleSubmit(async (data) => handle(await loginAction(data)))} className="space-y-4 pt-1">
         <Field error={errors.email?.message}>
-          <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
+          <label className={ui.label} htmlFor="login-email">Email de Cuenta VOUT</label>
+          <input id="login-email" {...register("email")} type="email" placeholder="usuario@email.com" aria-label="Email" autoComplete="email" className={ui.input} />
         </Field>
         <Field error={errors.password?.message}>
-          <input {...register("password")} type="password" placeholder="Password" aria-label="Password" autoComplete="current-password" className={ui.input} />
+          <div className="flex items-center justify-between">
+            <label className={ui.label} htmlFor="login-password">Contraseña</label>
+            <Link href="/forgot-password" className="text-xs text-[#94A3B8] hover:text-[#C6F827] transition mb-2">
+              ¿Olvidaste tu contraseña?
+            </Link>
+          </div>
+          <input id="login-password" {...register("password")} type="password" placeholder="••••••••••••" aria-label="Contraseña" autoComplete="current-password" className={ui.input} />
         </Field>
-        <div className="pt-6 flex flex-wrap items-center gap-6">
-          <button type="submit" disabled={isSubmitting} className={ui.button}>
-            {isSubmitting ? "Signing in..." : "Sign in"}
+        <div className="pt-4">
+          <button type="submit" disabled={isSubmitting} className={`${ui.button} w-full text-center py-3.5`}>
+            {isSubmitting ? "Accediendo a VOUT..." : "⚡ Acceder con Cuenta VOUT"}
           </button>
-          <Link href="/forgot-password" className={`${ui.muted} text-sm hover:text-[#5E48E8] transition`}>
-            Forgot your password?
-          </Link>
         </div>
       </form>
     </div>
@@ -87,22 +91,26 @@ export function RegisterForm() {
     <div className="space-y-4">
       <OAuthErrorNotice />
       <SocialAuthButtons mode="register" />
-      <form onSubmit={handleSubmit(async (data) => handle(await registerAction(data)))} className="space-y-2 pt-2">
+      <form onSubmit={handleSubmit(async (data) => handle(await registerAction(data)))} className="space-y-3 pt-1">
         <Field error={errors.name?.message}>
-          <input {...register("name")} placeholder="Your name" aria-label="Your name" autoComplete="name" className={ui.input} />
+          <label className={ui.label} htmlFor="reg-name">Nombre y Apellido</label>
+          <input id="reg-name" {...register("name")} placeholder="Tu nombre" aria-label="Nombre" autoComplete="name" className={ui.input} />
         </Field>
         <Field error={errors.organization?.message}>
-          <input {...register("organization")} placeholder="Company or team name" aria-label="Company or team name" autoComplete="organization" className={ui.input} />
+          <label className={ui.label} htmlFor="reg-org">Empresa / Proyecto</label>
+          <input id="reg-org" {...register("organization")} placeholder="Nombre de tu proyecto o empresa" aria-label="Empresa" autoComplete="organization" className={ui.input} />
         </Field>
         <Field error={errors.email?.message}>
-          <input {...register("email")} type="email" placeholder="Email" aria-label="Email" autoComplete="email" className={ui.input} />
+          <label className={ui.label} htmlFor="reg-email">Email de Cuenta VOUT</label>
+          <input id="reg-email" {...register("email")} type="email" placeholder="usuario@email.com" aria-label="Email" autoComplete="email" className={ui.input} />
         </Field>
         <Field error={errors.password?.message}>
-          <input {...register("password")} type="password" placeholder="Password (10 characters or more)" aria-label="Password" autoComplete="new-password" className={ui.input} />
+          <label className={ui.label} htmlFor="reg-pass">Contraseña</label>
+          <input id="reg-pass" {...register("password")} type="password" placeholder="Mínimo 10 caracteres" aria-label="Contraseña" autoComplete="new-password" className={ui.input} />
         </Field>
-        <div className="pt-6">
-          <button type="submit" disabled={isSubmitting} className={ui.button}>
-            {isSubmitting ? "Creating..." : "Create account"}
+        <div className="pt-4">
+          <button type="submit" disabled={isSubmitting} className={`${ui.button} w-full text-center py-3.5`}>
+            {isSubmitting ? "Creando Cuenta VOUT..." : "⚡ Crear Cuenta VOUT Unificada"}
           </button>
         </div>
       </form>

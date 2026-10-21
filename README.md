@@ -1,85 +1,62 @@
-# 📥 VOUT Inbox — Multi-Tenant Feedback & Customer Inbox
+<div align="center">
 
-A multi-tenant SaaS platform built to collect customer inquiries through embeddable forms, triage incoming messages in a unified real-time inbox, and manage contact relationships at scale.
+# 📥 VOUT Inbox
+### Multi-Tenant Feedback Gateway & Embeddable Customer Inbound Platform
 
-<p align="left">
-  <a href="https://saas-am.vercel.app"><img src="https://img.shields.io/badge/Live%20Demo-saas--am.vercel.app-6366f1?style=for-the-badge&logo=vercel" alt="Live Demo" /></a>
-  <a href="https://saas-am.vercel.app/demo"><img src="https://img.shields.io/badge/1--Click%20Demo%20Access-Guest%20Mode-10b981?style=for-the-badge&logo=shield" alt="1-Click Demo" /></a>
-  <img src="https://img.shields.io/badge/Next.js-16.4-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/React-19.3-20232a?style=for-the-badge&logo=react" alt="React 19" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/PostgreSQL-Neon-00E599?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma" alt="Prisma" />
-</p>
+[![VOUT Ecosystem](https://img.shields.io/badge/VOUT-Ecosystem-C6F827?style=for-the-badge&logoColor=black&labelColor=0A0E14)](https://github.com/AgustinMilesi)
+[![VOUT ID](https://img.shields.io/badge/VOUT_ID-Unified_Pass-C6F827?style=for-the-badge&logo=shield&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app/login)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-saas--am.vercel.app-C6F827?style=for-the-badge&logo=vercel&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app)
+[![1-Click Demo](https://img.shields.io/badge/1--Click_Demo-Guest_Access-10b981?style=for-the-badge&logoColor=white&labelColor=0A0E14)](https://saas-am.vercel.app/demo)
+
+</div>
 
 ---
 
-## 🎯 What is it for?
+## 🎯 Overview
 
-- **Capture leads anywhere**: Create standalone form pages (`/f/:id`) or embed them into any website with a clean `<iframe>`. Features silent anti-spam protection (honeypot fields and input sanitization).
-- **Centralized message triage**: A unified inbox with status filters (*New*, *Read*, *Archived*), instant keyword search, and 1-click email replies.
-- **Automatic contact directory**: Every form submitter is automatically saved into a clean customer directory with full inquiry history.
-- **Developer integrations**: Programmatic access with Bearer API keys and cryptographically signed webhooks (HMAC-SHA256) for real-time event streaming.
-
----
-
-## ✨ Core Modules
-
-| Module | Purpose |
-|---|---|
-| **Multi-Tenancy** | Strict organization data isolation with team roles (`Owner`, `Admin`, `Member`). |
-| **Form Builder & Hosted Pages** | Shareable public forms and embed snippets ready for landing pages and blogs. |
-| **Unified Inbox** | Real-time message triage, status updates, archiving, and quick email replies. |
-| **Customer Directory** | Contact records with linked message history and external ID mapping. |
-| **Developer API & Webhooks** | API key management with rate limiting and secure event delivery. |
+**VOUT Inbox** is a multi-tenant SaaS platform built to collect customer inquiries and visitor feedback through embeddable widgets, triage messages in a unified real-time inbox, and stream webhooks to external services.
+- ⚡ **Embeddable Forms:** Shareable hosted forms (`/f/:id`) or 1-line `<iframe>` snippets with silent honeypot anti-spam protection.
+- 📬 **Unified Inbox:** Real-time triage with status filtering (*New*, *Read*, *Archived*), keyword search, and 1-click email replies.
+- 👥 **Auto Customer Directory:** Form submissions automatically aggregate into clean customer records with historical logs.
+- 🔐 **Developer API & Webhooks:** Bearer API key access with rate limiting and cryptographically signed HMAC-SHA256 webhooks.
+- 🔑 **Cuenta VOUT (VOUT ID):** Unified authentication linking directly with VOUT Pocket, VOUT Retail, and VOUT Cargo.
 
 ---
 
-## 🛠️ Tech Stack
+## ⚡ Core Modules
 
-- **Frontend & Backend**: Next.js 16 (App Router, Server Actions) + React 19
-- **Language**: TypeScript (strict mode, zero `any`)
-- **Styling**: Tailwind CSS 4 (dark mode and translucent surfaces)
-- **Database**: PostgreSQL Serverless (Neon)
-- **ORM**: Prisma ORM with connection pooling
-- **Validation**: Zod + React Hook Form
-- **Transactional Emails**: Resend API
-- **Toasts & Feedback**: Sonner
+| Module | Route | Capabilities |
+|---|---|---|
+| **Unified Inbox** | `/app` | Real-time message triage, status updates, archiving, and quick email replies. |
+| **Form Builder** | `/app/forms` | Public forms and embeddable snippet generator ready for any website. |
+| **Contacts** | `/app/contacts` | Auto-generated customer directory with linked message history. |
+| **Developer API** | `/app/api-keys` | API key issuance, rate limits, and signed HMAC-SHA256 webhook subscriptions. |
 
 ---
 
-## ⚡ Quick Test (No Registration Needed)
+## 🛠️ Stack
 
-Try the full platform instantly in your browser:
-- **[1-Click Demo Login](https://saas-am.vercel.app/demo)** (logs in directly with preloaded test data).
-- Or visit [saas-am.vercel.app/login](https://saas-am.vercel.app/login) and click **"Entrar como Invitado (Modo Demo)"**.
+`Next.js 16` • `React 19` • `TypeScript` • `PostgreSQL Serverless (Neon)` • `Prisma ORM` • `Tailwind CSS v4` • `Zod` • `Resend API`
 
 ---
 
-## 🚀 Local Setup
+## 🚀 Quickstart
 
 ```bash
-# 1. Clone the repository
+# Clone and enter directory
 git clone https://github.com/AgustinMilesi/inbox.git
 cd inbox
 
-# 2. Install dependencies
+# Install dependencies & start
 npm install
-
-# 3. Configure environment variables
-cp .env.example .env
-
-# 4. Generate Prisma client & start development server
 npx prisma generate
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ---
 
 ### ⚡ The VOUT Software Ecosystem
-- [📱 VOUT Pocket](https://github.com/AgustinMilesi/expenses) — Mobile cost, subscription, and micro-spending tracker with React Native.
+- [📱 VOUT Pocket](https://github.com/AgustinMilesi/expenses) — Mobile cost, subscription & micro-spending tracker.
 - [💳 VOUT Retail](https://github.com/AgustinMilesi/retail) — Cloud point of sale, atomic stock control, and cash drawer audits.
-- [🚢 VOUT Cargo](https://github.com/AgustinMilesi/cargo) — International freight forwarding, customs clearance, and container tracking.
-- [📬 VOUT Connect](https://github.com/AgustinMilesi/contact) — Minimalist contact form and lead gateway with Zod validation.
+- [🚢 VOUT Cargo](https://github.com/AgustinMilesi/cargo) — Freight forwarding & customs tracking operating system.
+- [📬 VOUT Connect](https://github.com/AgustinMilesi/contact) — High-conversion contact portal with anti-spam protection.
