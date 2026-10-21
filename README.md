@@ -24,7 +24,7 @@
 - 📬 **Bandeja Central Unificada:** Clasificación de consultas en tiempo real por estado (*Nuevo*, *Leído*, *Archivado*), búsqueda instantánea y respuesta directa por email.
 - 👥 **Directorio Automático de Contactos:** Cada formulario procesado alimenta automáticamente la ficha del cliente con su historial de mensajes.
 - 🔐 **API & Webhooks Firmados:** Acceso seguro con claves API bearer y webhooks con firma criptográfica HMAC-SHA256 para enlazar con sistemas externos.
-- 🔑 **Cuenta VOUT (VOUT ID):** Conexión transparente con el resto del ecosistema (VOUT Retail y VOUT Pocket).
+- 🔑 **Cuenta VOUT (VOUT ID):** Conexión transparente con el resto del ecosistema (VOUT Retail y VOUT).
 
 ---
 
