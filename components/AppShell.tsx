@@ -112,7 +112,7 @@ export function AppShell({
           <Link
             href="/app/settings"
             onClick={() => setMobileOpen(false)}
-            className="p-2 border border-white/15 hover:border-[#5E48E8] hover:text-[#5E48E8] text-slate-300 rounded-full transition-colors flex items-center justify-center shrink-0"
+            className="p-2 border border-white/10 hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-slate-300 rounded-full transition-colors flex items-center justify-center shrink-0"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -132,9 +132,9 @@ export function AppShell({
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#EEF0FA] text-[#18182E]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-page,#0A0E14)] text-[var(--text-main,#FFFFFF)]">
       {/* 1. Unified Top Header with Hamburger and PreferencesControls */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-2.5 bg-white/85 backdrop-blur-md border-b border-[#EAE9F6] shrink-0 h-16 shadow-[0_4px_20px_rgba(94,72,232,0.04)]">
+      <header className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-2.5 bg-[var(--bg-card,#121824)] border-b border-[var(--border-card,#1E293B)] shrink-0 h-16 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
         <div className="flex items-center gap-3">
           {/* Hamburger toggle */}
           <button
@@ -146,7 +146,7 @@ export function AppShell({
                 toggleDesktopSidebar();
               }
             }}
-            className="p-2.5 rounded-2xl text-[#5E48E8] hover:bg-[#F3F2FD] transition-all duration-200 border border-[#EAE9F6] shadow-xs flex items-center justify-center active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5E48E8]"
+            className="p-2.5 rounded-2xl text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#1e293b)] transition-all duration-200 border border-[var(--border-card,#1E293B)] shadow-xs flex items-center justify-center active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
             title="Toggle menu / More space"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
@@ -162,16 +162,16 @@ export function AppShell({
           </button>
 
           <div className="flex items-center gap-2.5">
-            <span className="size-9 rounded-2xl bg-gradient-to-br from-[#6852F6] to-[#5538EA] text-white flex items-center justify-center shadow-[0_4px_12px_rgba(85,56,234,0.35)] shrink-0">
+            <span className="size-9 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text,#0A0E14)] flex items-center justify-center shadow-[0_4px_12px_var(--primary-accent-shadow)] shrink-0 font-bold">
               <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-4l-2 3H10l-2-3H4" />
               </svg>
             </span>
-            <span className="text-[#18182E] font-black text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
+            <span className="text-[var(--text-main,#FFFFFF)] font-black text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
               {organizationName}
             </span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#F0EEFF] text-[#5E48E8] border border-[#DDD8FE]">
-              <span className="size-1.5 rounded-full bg-[#5E48E8] animate-pulse" />
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--primary-accent)]/15 text-[var(--primary-accent)] border border-[var(--primary-accent)]/30">
+              <span className="size-1.5 rounded-full bg-[var(--primary-accent)] animate-pulse" />
               Demo / Invitado
             </span>
           </div>
@@ -181,7 +181,7 @@ export function AppShell({
           <PreferencesControls />
           <Link
             href="/app/settings"
-            className="p-2.5 border border-[#EAE9F6] hover:border-[#5E48E8] hover:text-[#5E48E8] text-[#72729A] bg-white rounded-2xl transition-all duration-200 flex items-center justify-center shrink-0 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95"
+            className="p-2.5 border border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-muted,#94A3B8)] bg-[var(--bg-card,#121824)] rounded-2xl transition-all duration-200 flex items-center justify-center shrink-0 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -202,7 +202,7 @@ export function AppShell({
       <div className="flex-1 flex items-start">
         {/* Desktop Sidebar (Collapsible & Viewport Sticky) */}
         {desktopOpen && (
-          <aside className="hidden md:flex w-64 flex-col shrink-0 border-r border-[#EAE9F6] p-5 bg-white/80 backdrop-blur-md sticky top-16 h-[calc(100dvh-4rem)] self-start overflow-hidden shadow-[4px_0_24px_rgba(94,72,232,0.02)]">
+          <aside className="hidden md:flex w-64 flex-col shrink-0 border-r border-[var(--border-card,#1E293B)] p-5 bg-[var(--bg-sidebar,#0D121B)] sticky top-16 h-[calc(100dvh-4rem)] self-start overflow-hidden shadow-[4px_0_24px_rgba(0,0,0,0.3)]">
             {sidebarContent}
           </aside>
         )}
@@ -212,11 +212,11 @@ export function AppShell({
           <div className="md:hidden fixed inset-0 z-50 flex">
             {/* Dark backdrop */}
             <div
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+              className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
               onClick={() => setMobileOpen(false)}
             />
             {/* Sliding drawer */}
-            <div role="dialog" aria-modal="true" aria-label="Navigation menu" className="relative w-72 max-w-[85vw] bg-white border-r border-[#EAE9F6] p-5 flex flex-col z-10 shadow-2xl h-[100dvh]">
+            <div role="dialog" aria-modal="true" aria-label="Navigation menu" className="relative w-72 max-w-[85vw] bg-[var(--bg-sidebar,#0D121B)] border-r border-[var(--border-card,#1E293B)] p-5 flex flex-col z-10 shadow-2xl h-[100dvh]">
               {sidebarContent}
             </div>
           </div>
