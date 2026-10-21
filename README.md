@@ -1,4 +1,4 @@
-# 📥 Customer Inbox & Forms Platform
+# 📥 VOUT Inbox — Multi-Tenant Feedback & Customer Inbox
 
 A multi-tenant SaaS platform built to collect customer inquiries through embeddable forms, triage incoming messages in a unified real-time inbox, and manage contact relationships at scale.
 
@@ -78,8 +78,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-### 🔗 Other Projects
-- [💳 Retail Engine & POS](https://github.com/AgustinMilesi/retail) — Point of sale, atomic stock control, and cash drawer audits.
-- [🌐 OneCargo Logistics](https://github.com/AgustinMilesi/cargo) — International freight forwarding, customs clearance, and container tracking.
-- [📱 PocketExpenses](https://github.com/AgustinMilesi/expenses) — Mobile cost and subscription tracker with React Native & NativeWind.
-- [📬 Contact Portal](https://github.com/AgustinMilesi/contact) — Minimalist contact form and lead gateway with Zod validation.
+### ⚡ The VOUT Software Ecosystem
+- [📱 VOUT Pocket](https://github.com/AgustinMilesi/expenses) — Mobile cost, subscription, and micro-spending tracker with React Native.
+- [💳 VOUT Retail](https://github.com/AgustinMilesi/retail) — Cloud point of sale, atomic stock control, and cash drawer audits.
+- [🚢 VOUT Cargo](https://github.com/AgustinMilesi/cargo) — International freight forwarding, customs clearance, and container tracking.
+- [📬 VOUT Connect](https://github.com/AgustinMilesi/contact) — Minimalist contact form and lead gateway with Zod validation.
