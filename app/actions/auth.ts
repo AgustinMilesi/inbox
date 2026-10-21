@@ -129,8 +129,8 @@ export async function guestLoginAction(): Promise<ActionResult> {
             role: "OWNER",
             organization: {
               create: {
-                name: "AgustinMilesi Demo Workspace",
-                slug: slugify("AgustinMilesi Demo Workspace"),
+                name: "VOUT Enterprise Workspace",
+                slug: slugify("VOUT Enterprise Workspace"),
                 notifyEmail: "demo@saas-am.vercel.app",
                 forms: {
                   create: {

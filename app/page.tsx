@@ -154,7 +154,7 @@ export default function Home() {
                           ✉
                         </span>
                         <div>
-                          <p className="font-bold text-white text-[11px]">Agustín M.</p>
+                          <p className="font-bold text-white text-[11px]">Enterprise Lead</p>
                           <p className="text-[9px] text-slate-400">Consulta comercial</p>
                         </div>
                       </div>
