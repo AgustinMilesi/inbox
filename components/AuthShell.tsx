@@ -19,8 +19,10 @@ export function AuthShell({
       {/* Top Bar */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="size-9 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm flex items-center justify-center shadow-[var(--primary-accent-shadow)] transition-transform group-hover:scale-105">
-            V
+          <div className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-[0_0_15px_rgba(198,248,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
+            <span className="font-black text-lg bg-gradient-to-br from-[#C6F827] via-[#10B981] to-[#00FF88] bg-clip-text text-transparent flex items-baseline leading-none select-none pl-0.5">
+              V<span className="text-[11px] font-black text-[#C6F827] ml-0.5">i</span>
+            </span>
           </div>
           <span className="font-black tracking-tight text-white group-hover:text-[var(--primary-accent)] transition">
             VOUT Inbox
