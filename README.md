@@ -1,62 +1,66 @@
 <div align="center">
 
 # 📥 VOUT Inbox
-### Multi-Tenant Feedback Gateway & Embeddable Customer Inbound Platform
+### Managed Multi-Channel CRM, Embeddable Inbound Forms & Lead Gateway
 
-[![VOUT Ecosystem](https://img.shields.io/badge/VOUT-Ecosystem-C6F827?style=for-the-badge&logoColor=black&labelColor=0A0E14)](https://github.com/AgustinMilesi)
-[![VOUT ID](https://img.shields.io/badge/VOUT_ID-Unified_Pass-C6F827?style=for-the-badge&logo=shield&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app/login)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-saas--am.vercel.app-C6F827?style=for-the-badge&logo=vercel&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app)
-[![1-Click Demo](https://img.shields.io/badge/1--Click_Demo-Guest_Access-10b981?style=for-the-badge&logoColor=white&labelColor=0A0E14)](https://saas-am.vercel.app/demo)
+[![VOUT Ecosystem](https://img.shields.io/badge/VOUT-Managed_Cloud-C6F827?style=for-the-badge&logoColor=black&labelColor=0A0E14)](https://github.com/AgustinMilesi)
+[![SLA](https://img.shields.io/badge/SLA-99.9%25_Uptime-C6F827?style=for-the-badge&logo=shield&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app/legal)
+[![Live Demo](https://img.shields.io/badge/Live_Service-saas--am.vercel.app-C6F827?style=for-the-badge&logo=vercel&logoColor=black&labelColor=0A0E14)](https://saas-am.vercel.app)
+[![1-Click Demo](https://img.shields.io/badge/1--Click_Demo-Acceso_Invitado-10b981?style=for-the-badge&logoColor=white&labelColor=0A0E14)](https://saas-am.vercel.app/demo)
+
+<p align="center">
+  <strong>Plataforma SaaS en la nube para captura y centralización de leads, mensajes de clientes y formularios web.</strong>
+</p>
 
 </div>
 
 ---
 
-## 🎯 Overview
+## 🎯 Modelo de Servicio Administrado (Managed SaaS)
 
-**VOUT Inbox** is a multi-tenant SaaS platform built to collect customer inquiries and visitor feedback through embeddable widgets, triage messages in a unified real-time inbox, and stream webhooks to external services.
-- ⚡ **Embeddable Forms:** Shareable hosted forms (`/f/:id`) or 1-line `<iframe>` snippets with silent honeypot anti-spam protection.
-- 📬 **Unified Inbox:** Real-time triage with status filtering (*New*, *Read*, *Archived*), keyword search, and 1-click email replies.
-- 👥 **Auto Customer Directory:** Form submissions automatically aggregate into clean customer records with historical logs.
-- 🔐 **Developer API & Webhooks:** Bearer API key access with rate limiting and cryptographically signed HMAC-SHA256 webhooks.
-- 🔑 **Cuenta VOUT (VOUT ID):** Unified authentication linking directly with VOUT Pocket, VOUT Retail, and VOUT Cargo.
+**VOUT Inbox** se entrega como un servicio en la nube gestionado que centraliza las comunicaciones entrantes de cualquier negocio:
+- 🚀 **Zero-DevOps:** Servidores cloud redundantes con disponibilidad garantizada y mantenimiento de infraestructura incluido.
+- ⚡ **Formularios Embebiles:** Páginas públicas de contacto (`/f/:id`) o widgets en 1 línea `<iframe>` con trampa anti-spam silenciosa (honeypot).
+- 📬 **Bandeja Central Unificada:** Clasificación de consultas en tiempo real por estado (*Nuevo*, *Leído*, *Archivado*), búsqueda instantánea y respuesta directa por email.
+- 👥 **Directorio Automático de Contactos:** Cada formulario procesado alimenta automáticamente la ficha del cliente con su historial de mensajes.
+- 🔐 **API & Webhooks Firmados:** Acceso seguro con claves API bearer y webhooks con firma criptográfica HMAC-SHA256 para enlazar con sistemas externos.
+- 🔑 **Cuenta VOUT (VOUT ID):** Conexión transparente con el resto del ecosistema (VOUT Retail y VOUT Pocket).
 
 ---
 
-## ⚡ Core Modules
+## ⚡ Módulos Operativos
 
-| Module | Route | Capabilities |
+| Módulo | Ruta | Funcionalidad |
 |---|---|---|
-| **Unified Inbox** | `/app` | Real-time message triage, status updates, archiving, and quick email replies. |
-| **Form Builder** | `/app/forms` | Public forms and embeddable snippet generator ready for any website. |
-| **Contacts** | `/app/contacts` | Auto-generated customer directory with linked message history. |
-| **Developer API** | `/app/api-keys` | API key issuance, rate limits, and signed HMAC-SHA256 webhook subscriptions. |
+| **Bandeja Central** | `/app` | Triage de consultas entrantes, etiquetado y respuestas rápidas. |
+| **Generador de Formularios** | `/app/forms` | Constructor de formularios web e integración mediante código embebible. |
+| **Contactos** | `/app/contacts` | Fichero automatizado de clientes con trazabilidad de mensajes. |
+| **API & Integraciones** | `/app/settings` | Emisión de API Keys y configuración de endpoints de webhooks seguros. |
+| **Marco Legal & SLA** | `/legal` | Contrato de servicio administrado, SLA 99.9% y política de privacidad. |
 
 ---
 
-## 🛠️ Stack
+## 🛠️ Stack Tecnológico
 
 `Next.js 16` • `React 19` • `TypeScript` • `PostgreSQL Serverless (Neon)` • `Prisma ORM` • `Tailwind CSS v4` • `Zod` • `Resend API`
 
 ---
 
-## 🚀 Quickstart
+## ⚙️ Operación & Mantenimiento Interno
 
 ```bash
-# Clone and enter directory
-git clone https://github.com/AgustinMilesi/inbox.git
-cd inbox
+# Verificación de compilación y tipado
+npm run typecheck
 
-# Install dependencies & start
-npm install
-npx prisma generate
-npm run dev
+# Suite de pruebas automatizadas (validación de esquemas y honeypot)
+npm test
+
+# Sincronización de base de datos
+npx prisma db push
 ```
 
 ---
 
-### ⚡ The VOUT Software Ecosystem
-- [📱 VOUT Pocket](https://github.com/AgustinMilesi/expenses) — Mobile cost, subscription & micro-spending tracker.
-- [💳 VOUT Retail](https://github.com/AgustinMilesi/retail) — Cloud point of sale, atomic stock control, and cash drawer audits.
-- [🚢 VOUT Cargo](https://github.com/AgustinMilesi/cargo) — Freight forwarding & customs tracking operating system.
-- [📬 VOUT Connect](https://github.com/AgustinMilesi/contact) — High-conversion contact portal with anti-spam protection.
+<div align="center">
+  <p>© 2026 VOUT Inbox · Managed Cloud Communications & CRM.</p>
+</div>
