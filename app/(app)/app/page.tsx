@@ -43,7 +43,7 @@ export default async function OverviewPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/app/inbox"
-            className="px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-[0_8px_20px_rgba(198,248,39,0.32)] hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2"
+            className="px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2"
           >
             <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-4l-2 3H10l-2-3H4" />
@@ -65,10 +65,6 @@ export default async function OverviewPage() {
           href="/app/inbox?status=NEW"
           className="lg:col-span-6 p-7 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-[#121824] via-[#0F1520] to-[#0A0E14] border border-[#1E293B] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] hover:border-[#C6F827]/40 group cursor-pointer transition-all duration-200"
         >
-          {/* Subtle decorative lights inside card */}
-          <div className="absolute -top-12 -right-12 size-40 bg-[#C6F827]/5 rounded-full blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 size-48 bg-[#10B981]/5 rounded-full blur-2xl pointer-events-none" />
-
           <div>
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#94A3B8]">
@@ -153,7 +149,7 @@ export default async function OverviewPage() {
                   <span className="min-w-0 flex items-center gap-3">
                     <span
                       className={`size-2 rounded-full shrink-0 ${
-                        m.status === "NEW" ? "bg-[#C6F827] shadow-[0_0_8px_#C6F827]" : "bg-transparent"
+                        m.status === "NEW" ? "bg-[#C6F827]" : "bg-transparent"
                       }`}
                     />
                     <span className="min-w-0">

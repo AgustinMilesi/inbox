@@ -94,7 +94,7 @@ export default async function InboxPage({
                   <span
                     aria-label={m.status === "NEW" ? "New" : undefined}
                     className={`size-2.5 rounded-full shrink-0 ${
-                      m.status === "NEW" ? "bg-[#5E48E8] shadow-[0_0_8px_rgba(94,72,232,0.6)]" : "bg-transparent"
+                      m.status === "NEW" ? "bg-[var(--primary-accent)]" : "bg-transparent"
                     }`}
                   />
                   <span className="min-w-0 flex-1">

@@ -39,7 +39,7 @@ export default async function MessagePage({ params }: { params: Promise<{ id: st
           <div className="flex items-center gap-3">
             <span
               className={`size-2.5 rounded-full ${
-                message.status === "NEW" ? "bg-[#5E48E8] shadow-[0_0_8px_rgba(94,72,232,0.6)]" : "bg-emerald-500"
+                message.status === "NEW" ? "bg-[var(--primary-accent)]" : "bg-emerald-500"
               }`}
             />
             <span className="text-xs font-bold uppercase tracking-wider text-[#72729A]">
