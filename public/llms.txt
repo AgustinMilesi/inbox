@@ -1,0 +1,24 @@
+# VOUT Inbox · Multi-Tenant Customer Feedback Platform
+> Multi-tenant customer feedback platform with embeddable web forms and signed HMAC-SHA256 webhooks.
+
+## Overview
+VOUT Inbox centralizes inbound communication from websites, web applications, and customer touchpoints into a unified, isolated multi-tenant triage console.
+
+## Core Capabilities
+- Strict tenant data isolation via organization-scoped PostgreSQL queries
+- Embeddable widget forms via `<iframe>` and REST API v1
+- Cryptographically signed HMAC-SHA256 outbound webhooks with retry policy
+- Instant triage status workflow (New, In Progress, Resolved, Archived)
+- Internal notes and team collaboration audit trail
+
+## Live Demo & Endpoints
+- Production Live URL: https://saas-am.vercel.app
+- 1-Click Guest Access: https://saas-am.vercel.app/demo
+- Live Inbox: https://saas-am.vercel.app/inbox
+- Source Code: https://github.com/AgustinMilesi/inbox
+
+## Technical Stack
+- Next.js 16 (App Router) + React 19 + Tailwind CSS v4
+- Prisma ORM 6 on Neon Serverless PostgreSQL
+- Resend API for transactional alerts
+- Creator: Agustín Milesi (https://github.com/AgustinMilesi)
