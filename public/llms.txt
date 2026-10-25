@@ -13,7 +13,7 @@ VOUT Inbox centralizes inbound communication from websites, web applications, an
 
 ## Live Demo & Endpoints
 - Production Live URL: https://saas-am.vercel.app
-- 1-Click Guest Access: https://saas-am.vercel.app/demo
+- Live Demo Access: https://saas-am.vercel.app/demo
 - Live Inbox: https://saas-am.vercel.app/inbox
 - Source Code: https://github.com/AgustinMilesi/inbox
 
