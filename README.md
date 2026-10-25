@@ -67,6 +67,7 @@ npx prisma db push
 
 Este código fuente, arquitectura, esquemas de base de datos y diseño son **software propietario y confidencial**.
 - Queda terminantemente prohibida su descarga, clonación, redistribución, sublicenciamiento o uso comercial sin autorización previa expresa por escrito.
+- **Contribuciones y Colaboración:** Repositorio de desarrollo privado. No se aceptan contribuciones abiertas, sugerencias de código externas ni Pull Requests; la colaboración se realiza exclusivamente bajo invitación directa de Agustín Milesi.
 - La [demostración pública en vivo](https://saas-am.vercel.app) se ofrece únicamente para evaluación de la experiencia de usuario.
 - Consultas de licenciamiento privado o adquisición comercial: [Contacto](https://saas-am.vercel.app/contact).
 
