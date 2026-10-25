@@ -5,20 +5,22 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
-
-const INQUIRY_SCOPES = [
-  { id: "enterprise", label: "Enterprise Cloud", preset: "Despliegue Enterprise & Arquitectura Cloud Dedicada" },
-  { id: "retail", label: "VOUT Retail (POS)", preset: "Integración de Punto de Venta, Hardware Fiscal & Stock" },
-  { id: "inbox", label: "VOUT Inbox (CRM)", preset: "Pipeline Unificado de Clientes & Webhooks HMAC-SHA256" },
-  { id: "cargo", label: "VOUT Cargo (Logística)", preset: "Operaciones de Carga Internacional & Rastreo Aduanero" },
-  { id: "pocket", label: "VOUT Pocket & Web", preset: "Finanzas Personales, Sincronización Nube & App Android" },
-  { id: "custom", label: "Auditoría de Software", preset: "Auditoría de Arquitectura Full-Stack & Consultoría Técnica" },
-];
+import { usePreferences } from "@/components/PreferencesProvider";
 
 export function ContactForm() {
+  const { t, locale } = usePreferences();
   const [loading, setLoading] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [selectedScope, setSelectedScope] = useState<string | null>(null);
+
+  const INQUIRY_SCOPES = [
+    { id: "enterprise", label: t.scopeEnterprise, preset: "Enterprise Cloud & Dedicated Infrastructure" },
+    { id: "retail", label: t.scopeRetail, preset: "VOUT Retail - POS & Fiscal Sync" },
+    { id: "inbox", label: t.scopeInbox, preset: "VOUT Inbox - Unified Pipeline & HMAC-SHA256" },
+    { id: "cargo", label: t.scopeCargo, preset: "VOUT Cargo - International Freight & Logistics" },
+    { id: "pocket", label: t.scopePocket, preset: "VOUT Pocket - Personal Finance & Cloud Sync" },
+    { id: "custom", label: t.scopeCustom, preset: "Software Architecture Audit & Consultation" },
+  ];
 
   const {
     register,
@@ -34,17 +36,17 @@ export function ContactForm() {
   const handleSelectScope = (scope: (typeof INQUIRY_SCOPES)[0]) => {
     setSelectedScope(scope.id);
     setValue("subject", scope.preset, { shouldValidate: true });
-    toast.info(`Alcance configurado: ${scope.label}`);
+    toast.info(`${scope.label}`);
   };
 
   const copyInboundEmail = async () => {
     try {
       await navigator.clipboard.writeText("agusmilesi2002@gmail.com");
       setCopiedEmail(true);
-      toast.success("Canal directo copiado: agusmilesi2002@gmail.com");
+      toast.success(t.contactCopied + ": agusmilesi2002@gmail.com");
       setTimeout(() => setCopiedEmail(false), 3000);
     } catch {
-      toast.error("No se pudo copiar al portapapeles");
+      toast.error("Error copying email");
     }
   };
 
@@ -58,17 +60,25 @@ export function ContactForm() {
       });
 
       if (res.status === 429) {
-        toast.error("Límite de seguridad temporal. Por favor espere 60 segundos antes de reenviar.");
+        toast.error("Rate limit. Please wait 60 seconds.");
         return;
       }
 
       if (!res.ok) throw new Error();
 
-      toast.success("Transmisión recibida. Su mensaje fue ingresado directamente a la bandeja de VOUT Inbox.");
+      toast.success(
+        locale === "es"
+          ? "Transmisión recibida. Su mensaje fue ingresado directamente a la bandeja de VOUT Inbox."
+          : locale === "pt"
+          ? "Transmissão recebida. Sua mensagem foi inserida diretamente na caixa de entrada do VOUT Inbox."
+          : locale === "zh"
+          ? "传输已接收。您的消息已直接存入 VOUT Inbox。"
+          : "Transmission received. Your message has been routed directly into VOUT Inbox."
+      );
       reset();
       setSelectedScope(null);
     } catch {
-      toast.error("No se pudo enviar el mensaje. Verifique su conexión y reintente.");
+      toast.error("Error sending message.");
     } finally {
       setLoading(false);
     }
@@ -84,7 +94,7 @@ export function ContactForm() {
       {/* Scope Selector Chips */}
       <div>
         <label className="block text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400 mb-2.5">
-          1. Seleccione el Alcance Técnico del Requerimiento
+          {t.contactScopeLabel}
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
           {INQUIRY_SCOPES.map((scope) => {
@@ -128,13 +138,13 @@ export function ContactForm() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label className={labelClass} htmlFor="contact-name">
-              <span>Nombre y Apellido</span>
+              <span>{t.contactNameLabel}</span>
               {errors.name && <span className="text-red-400 normal-case font-normal">{errors.name.message}</span>}
             </label>
             <input
               id="contact-name"
               type="text"
-              placeholder="Ej. Martín Rodríguez"
+              placeholder={t.contactNamePlaceholder}
               {...register("name")}
               className={inputClass}
             />
@@ -142,13 +152,13 @@ export function ContactForm() {
 
           <div>
             <label className={labelClass} htmlFor="contact-email">
-              <span>Email Corporativo / Personal</span>
+              <span>{t.contactEmailLabel}</span>
               {errors.email && <span className="text-red-400 normal-case font-normal">{errors.email.message}</span>}
             </label>
             <input
               id="contact-email"
               type="email"
-              placeholder="nombre@empresa.com"
+              placeholder={t.contactEmailPlaceholder}
               {...register("email")}
               className={inputClass}
             />
@@ -158,13 +168,13 @@ export function ContactForm() {
         {/* Subject Input */}
         <div>
           <label className={labelClass} htmlFor="contact-subject">
-            <span>Asunto de la Transmisión</span>
+            <span>{t.contactSubjectLabel}</span>
             {errors.subject && <span className="text-red-400 normal-case font-normal">{errors.subject.message}</span>}
           </label>
           <input
             id="contact-subject"
             type="text"
-            placeholder="Ej. Integración de VOUT Inbox con infraestructura existente"
+            placeholder={t.contactSubjectPlaceholder}
             {...register("subject")}
             className={inputClass}
           />
@@ -173,15 +183,15 @@ export function ContactForm() {
         {/* Message Input */}
         <div>
           <label className={labelClass} htmlFor="contact-message">
-            <span>Mensaje &amp; Especificaciones Técnicas</span>
+            <span>{t.contactMessageLabel}</span>
             <span className="text-[10px] text-slate-500 font-mono">
-              {messageVal.length} / 5000 caracteres
+              {messageVal.length} / 5000 {t.contactCharCount}
             </span>
           </label>
           <textarea
             id="contact-message"
             rows={5}
-            placeholder="Describa el objetivo de su proyecto, tiempos estimados, volúmenes de transacción o consultas que desea resolver..."
+            placeholder={t.contactMessagePlaceholder}
             {...register("message")}
             className={`${inputClass} resize-y min-h-[120px]`}
           />
@@ -200,7 +210,7 @@ export function ContactForm() {
             <span className="size-2 rounded-full bg-emerald-400" />
             <span>agusmilesi2002@gmail.com</span>
             <span className="text-[10px] text-[#C6F827] uppercase tracking-wider font-bold ml-1 group-hover:underline">
-              {copiedEmail ? "¡Copiado!" : "[Copiar]"}
+              {copiedEmail ? t.contactCopied : `[${t.contactCopyBtn}]`}
             </span>
           </button>
 
@@ -215,11 +225,11 @@ export function ContactForm() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                 </svg>
-                <span>Procesando Envío...</span>
+                <span>{t.contactSending}</span>
               </>
             ) : (
               <>
-                <span>Despachar Mensaje Directo</span>
+                <span>{t.contactSubmitBtn}</span>
                 <span className="text-base leading-none">→</span>
               </>
             )}
