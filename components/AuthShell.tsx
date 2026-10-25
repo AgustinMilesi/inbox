@@ -19,14 +19,26 @@ export function AuthShell({
       {/* Top Bar */}
       <header className="w-full max-w-6xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shadow-[0_0_15px_rgba(198,248,39,0.25)] shrink-0 transition-transform group-hover:scale-105">
-            <span className="font-black text-lg bg-gradient-to-br from-[#C6F827] via-[#10B981] to-[#00FF88] bg-clip-text text-transparent flex items-baseline leading-none select-none pl-0.5">
-              V<span className="text-[11px] font-black text-[#C6F827] ml-0.5">i</span>
+          <div className="size-9 rounded-2xl bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1.5 shadow-sm transition-transform group-hover:scale-105 shrink-0">
+            <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
+              <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
+              <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
+              <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
+              <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+            </svg>
+          </div>
+          <div className="flex items-baseline gap-1.5 leading-none">
+            <span className="font-black text-lg tracking-[-0.05em] text-white">
+              <span className="text-[#E9E7E0]">v</span>
+              <span className="text-[#C6F827]">out</span>
+            </span>
+            <span className="text-[10px] font-mono text-[#C6F827] px-1.5 py-0.5 rounded bg-[#121824] border border-[#1E293B]">
+              inbox
             </span>
           </div>
-          <span className="font-black tracking-tight text-white group-hover:text-[var(--primary-accent)] transition">
-            VOUT Inbox
-          </span>
         </Link>
         <PreferencesControls />
       </header>
@@ -37,27 +49,11 @@ export function AuthShell({
           <Headline light={light} bold={bold} />
           <div className="pt-6">{children}</div>
         </div>
-
-        <div className="md:col-span-2 space-y-8">
+        <div className="md:col-span-2 space-y-8 md:pt-12 text-slate-400">
           <MailIcon />
-          <div className="rounded-2xl p-6 space-y-4 text-base bg-[#121824] border border-[#1E293B] text-slate-200 shadow-sm">
-            {side}
-          </div>
+          <div className="space-y-4 text-base">{side}</div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="w-full max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 pt-6 border-t border-[#1E293B]">
-        <p>© {new Date().getFullYear()} VOUT Inbox · Managed Cloud CRM &amp; Communications.</p>
-        <div className="flex items-center gap-4">
-          <Link href="/legal" className="hover:text-[var(--primary-accent)] transition">
-            Términos &amp; Privacidad
-          </Link>
-          <Link href="/" className="hover:text-[var(--primary-accent)] transition font-medium">
-            ← Volver al inicio
-          </Link>
-        </div>
-      </footer>
     </main>
   );
 }

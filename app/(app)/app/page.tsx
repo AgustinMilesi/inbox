@@ -43,7 +43,7 @@ export default async function OverviewPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/app/inbox"
-            className="px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-gradient-to-r from-[#C6F827] to-[#10B981] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2"
+            className="px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-[#C6F827] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2"
           >
             <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-4l-2 3H10l-2-3H4" />
