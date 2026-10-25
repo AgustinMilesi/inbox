@@ -61,6 +61,17 @@ npx prisma db push
 
 ---
 
+## ⚖️ Licencia y Propiedad Intelectual
+
+**Copyright © 2026 Agustín Milesi. Todos los derechos reservados.**
+
+Este código fuente, arquitectura, esquemas de base de datos y diseño son **software propietario y confidencial**.
+- Queda terminantemente prohibida su descarga, clonación, redistribución, sublicenciamiento o uso comercial sin autorización previa expresa por escrito.
+- La [demostración pública en vivo](https://saas-am.vercel.app) se ofrece únicamente para evaluación de la experiencia de usuario.
+- Consultas de licenciamiento privado o adquisición comercial: [Contacto](https://saas-am.vercel.app/contact).
+
+---
+
 <div align="center">
-  <p>© 2026 VOUT Inbox · Managed Cloud Communications & CRM.</p>
+  <p>© 2026 Agustín Milesi · VOUT Inbox · Managed Cloud Communications · All Rights Reserved</p>
 </div>
