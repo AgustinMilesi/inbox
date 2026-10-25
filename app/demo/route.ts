@@ -20,7 +20,7 @@ export async function GET(request: Request) {
     const passwordHash = await hashPassword("GuestDemo2026!");
     user = await db.user.create({
       data: {
-        name: "Invitado Demo",
+        name: "Agustín Milesi",
         email: "demo@saas-am.vercel.app",
         passwordHash,
         memberships: {
@@ -54,6 +54,13 @@ export async function GET(request: Request) {
   const org = membership?.organization;
 
   if (org) {
+    if (user.name !== "Agustín Milesi") {
+      await db.user.update({
+        where: { id: user.id },
+        data: { name: "Agustín Milesi" },
+      });
+    }
+
     const messageCount = await db.message.count({
       where: { organizationId: org.id },
     });

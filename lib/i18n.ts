@@ -40,7 +40,7 @@ export const translations = {
     // Landing navigation
     navPlatform: "Platform",
     navContact: "Direct Contact",
-    navDemo: "1-Click Demo",
+    navDemo: "Live Demo",
     navLogin: "Sign In",
     navStart: "Get Started",
     // Hero Section
@@ -50,8 +50,8 @@ export const translations = {
     heroH1C: "in one central inbox.",
     heroDesc:
       "Capture inquiries through embeddable web forms, triage customer conversations in real-time, and relay verified leads seamlessly into the VOUT ecosystem.",
-    heroGuestDemo: "✨ Guest Access",
-    heroDemoBadge: "1-Click Demo",
+    heroGuestDemo: "🚀 Live Demo",
+    heroDemoBadge: "Live",
     heroContactBtn: "✉️ Direct Contact Form",
     heroConsoleBtn: "Access Console",
     // Mockup
@@ -153,7 +153,7 @@ export const translations = {
     // Landing navigation
     navPlatform: "Plataforma",
     navContact: "Contacto Directo",
-    navDemo: "Demo Invitado",
+    navDemo: "Live Demo",
     navLogin: "Iniciar Sesión",
     navStart: "Comenzar Ahora",
     // Hero Section
@@ -163,8 +163,8 @@ export const translations = {
     heroH1C: "en una bandeja central.",
     heroDesc:
       "Captura consultas desde formularios web integrables, clasifica mensajes en tiempo real, recibe prospectos institucionales y sincroniza contactos directamente con el ecosistema VOUT.",
-    heroGuestDemo: "✨ Entrar como Invitado",
-    heroDemoBadge: "1-Click Demo",
+    heroGuestDemo: "🚀 Live Demo",
+    heroDemoBadge: "En Vivo",
     heroContactBtn: "✉️ Formulario de Contacto",
     heroConsoleBtn: "Acceder a Consola",
     // Mockup
@@ -266,7 +266,7 @@ export const translations = {
     // Landing navigation
     navPlatform: "Plataforma",
     navContact: "Contato Direto",
-    navDemo: "Demo Convidado",
+    navDemo: "Live Demo",
     navLogin: "Iniciar Sessão",
     navStart: "Começar Agora",
     // Hero Section
@@ -276,8 +276,8 @@ export const translations = {
     heroH1C: "numa caixa central.",
     heroDesc:
       "Capture consultas por formulários web incorporáveis, gerencie mensagens em tempo real e sincronize leads com o ecossistema VOUT.",
-    heroGuestDemo: "✨ Modo Convidado",
-    heroDemoBadge: "1-Clique Demo",
+    heroGuestDemo: "🚀 Live Demo",
+    heroDemoBadge: "Ao Vivo",
     heroContactBtn: "✉️ Formulário de Contato",
     heroConsoleBtn: "Acessar Console",
     // Mockup
@@ -379,7 +379,7 @@ export const translations = {
     // Landing navigation
     navPlatform: "平台架构",
     navContact: "直接联系",
-    navDemo: "访客即刻演示",
+    navDemo: "Live Demo",
     navLogin: "登录",
     navStart: "立即开始",
     // Hero Section
@@ -389,8 +389,8 @@ export const translations = {
     heroH1C: "汇聚于统一中心收件箱。",
     heroDesc:
       "通过可嵌入网页表单捕获咨询，实时分拣客户对话，并将线索无缝同步至 VOUT 业务生态体系中。",
-    heroGuestDemo: "✨ 访客直接体验",
-    heroDemoBadge: "1-点击演示",
+    heroGuestDemo: "🚀 Live Demo",
+    heroDemoBadge: "在线",
     heroContactBtn: "✉️ 直接联系表单",
     heroConsoleBtn: "访问管理台",
     // Mockup

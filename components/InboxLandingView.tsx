@@ -99,10 +99,7 @@ export function InboxLandingView() {
                 prefetch={false}
                 className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 transition flex items-center gap-2 group hover:opacity-95"
               >
-                <span>{t.heroGuestDemo}</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider bg-black/20 dark:bg-white/20 px-2 py-0.5 rounded-full">
-                  {t.heroDemoBadge}
-                </span>
+                <span>🚀 Live Demo →</span>
               </Link>
               <a
                 href="#contacto"

@@ -187,7 +187,7 @@ export function AppShell({
             </span>
             <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--primary-accent)]/15 text-[var(--primary-accent)] border border-[var(--primary-accent)]/30">
               <span className="size-1.5 rounded-full bg-[var(--primary-accent)] animate-pulse" />
-              Demo / Invitado
+              Live Demo
             </span>
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function ContactPage() {
             href="/demo"
             className="hidden sm:inline-flex px-4 py-2 text-xs font-black uppercase tracking-wider bg-[#C6F827] text-[#0A0E14] rounded-xl hover:bg-[#bcf020] transition"
           >
-            Demo Invitado
+            Live Demo
           </Link>
         </div>
       </header>
