@@ -96,6 +96,7 @@ export function InboxLandingView() {
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
                 href="/demo"
+                prefetch={false}
                 className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 transition flex items-center gap-2 group hover:opacity-95"
               >
                 <span>{t.heroGuestDemo}</span>
