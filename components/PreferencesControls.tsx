@@ -22,7 +22,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 text-xs font-sans text-[#a3a3a3] hover:text-white transition-all min-h-[40px] px-3 py-2 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] active:scale-[0.98]"
+        className="flex items-center gap-1.5 sm:gap-2 text-xs font-sans text-[#a3a3a3] hover:text-white transition-all min-h-[40px] px-2.5 sm:px-3 py-1.5 rounded-[6px] bg-[#161616] border border-[#262626] hover:border-[#383838] select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c5ff4a] active:scale-[0.98] shrink-0"
         title="Customization & Preferences"
         aria-label="Open preferences menu"
         aria-expanded={open}
@@ -30,7 +30,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
       >
         {/* Minimalist mode icon: Sun / Moon */}
         {mode === "dark" ? (
-          <svg className="size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-3.5 sm:size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -39,7 +39,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
             />
           </svg>
         ) : (
-          <svg className="size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-3.5 sm:size-4 text-[#a3a3a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -51,7 +51,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
 
         {/* Color accent dot */}
         <span
-          className="size-2.5 rounded-full ring-1 ring-white/20 shrink-0"
+          className="size-2 rounded-full ring-1 ring-white/20 shrink-0"
           style={{ backgroundColor: THEMES.find((x) => x.id === theme)?.hex }}
         />
 
@@ -79,7 +79,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
             aria-label="Panel de preferencias"
             className={`absolute right-0 ${
               placement === "up" ? "bottom-full mb-2" : "top-full mt-2"
-            } w-68 p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
+            } w-[calc(100vw-2rem)] max-w-[280px] p-4 rounded-[6px] bg-[#121212] border border-[#262626] shadow-[0_16px_40px_rgba(0,0,0,0.85)] z-50 space-y-4 animate-smooth-in`}
           >
             {/* Mode selection: Claro / Oscuro */}
             <div>

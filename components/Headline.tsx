@@ -16,7 +16,7 @@ export function Headline({ light, bold }: { light: string[]; bold: string }) {
 
 export function PageTitle({ light, bold }: { light: string; bold: string }) {
   return (
-    <h1 className="text-2xl sm:text-3xl leading-tight tracking-tight font-serif">
+    <h1 className="text-2xl sm:text-3xl leading-tight tracking-tight font-serif break-words min-w-0">
       <span className="font-light text-[#e5e5e5]">{light} </span>
       <span className="font-light italic text-[var(--primary-accent)]">{bold}</span>
     </h1>

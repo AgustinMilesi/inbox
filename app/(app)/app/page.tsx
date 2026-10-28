@@ -29,28 +29,28 @@ export default async function OverviewPage() {
   ]);
 
   return (
-    <div className="space-y-8 animate-smooth-in">
+    <div className="space-y-6 w-full max-w-full overflow-x-hidden animate-smooth-in">
       {/* 1. Header with greeting and organization info */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <PageTitle light={t.hi} bold={`${user.name.split(" ")[0]}.`} />
-          <p className="text-sm text-[#72729A] mt-1 font-medium">
-            Workspace: <span className="font-semibold text-[#18182E]">{organization.name}</span>
+          <p className="text-sm text-[#a3a3a3] mt-1 font-medium truncate">
+            Workspace: <span className="font-semibold text-white">{organization.name}</span>
           </p>
         </div>
 
-        {/* Quick link button to Inbox */}
-        <div className="flex items-center gap-3">
+        {/* Quick link button to Inbox (Ergonomic 44px min-height) */}
+        <div className="flex items-center gap-3 shrink-0">
           <Link
             href="/app/inbox"
-            className="px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-wider text-[#0A0E14] bg-[#C6F827] shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all flex items-center gap-2"
+            className={ui.button}
           >
-            <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="size-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-4l-2 3H10l-2-3H4" />
             </svg>
             <span>{t.inbox}</span>
             {unread > 0 && (
-              <span className="px-2 py-0.5 rounded-full bg-black/20 text-[#0A0E14] font-mono text-[11px] font-black">
+              <span className="px-2 py-0.5 rounded-full bg-black text-[#c5ff4a] font-mono text-[11px] font-bold">
                 {unread}
               </span>
             )}
@@ -58,35 +58,35 @@ export default async function OverviewPage() {
         </div>
       </div>
 
-      {/* 2. Top Hero Section: VOUT Obsidian Card + 2 Metric Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      {/* 2. Top Hero Section: Metric Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
         {/* VOUT Obsidian Hero Card: New Messages (Span 6) */}
         <Link
           href="/app/inbox?status=NEW"
-          className="lg:col-span-6 p-7 rounded-3xl relative overflow-hidden flex flex-col justify-between bg-gradient-to-br from-[#121824] via-[#0F1520] to-[#0A0E14] border border-[#1E293B] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.7)] hover:border-[#C6F827]/40 group cursor-pointer transition-all duration-200"
+          className="lg:col-span-6 p-6 sm:p-7 rounded-[6px] relative overflow-hidden flex flex-col justify-between bg-[#141414] border border-[#262626] hover:border-[#383838] group cursor-pointer transition-all duration-200"
         >
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#94A3B8]">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">
                 {t.newMessages}
               </span>
-              <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#C6F827]/15 text-[#C6F827] border border-[#C6F827]/30">
+              <span className="px-2.5 py-1 rounded-[4px] text-xs font-bold bg-[#c5ff4a]/12 text-[#c5ff4a] border border-[#c5ff4a]/30">
                 Inbox
               </span>
             </div>
 
             <div className="mt-4">
-              <p className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+              <p className="text-4xl sm:text-5xl font-black text-white tracking-tight font-mono">
                 {unread}
               </p>
             </div>
           </div>
 
-          <div className="mt-8 pt-5 border-t border-[#1E293B] flex items-center justify-between text-xs">
-            <span className="text-[#94A3B8]">
+          <div className="mt-8 pt-5 border-t border-[#262626] flex items-center justify-between text-xs">
+            <span className="text-[#a3a3a3]">
               {unread === 1 ? "1 message awaiting review" : `${unread} messages awaiting review`}
             </span>
-            <span className="text-xs font-bold text-[#C6F827] group-hover:translate-x-1 transition-transform">
+            <span className="text-xs font-semibold text-[#c5ff4a] group-hover:translate-x-1 transition-transform">
               Open inbox →
             </span>
           </div>
@@ -96,13 +96,13 @@ export default async function OverviewPage() {
         <div className="lg:col-span-6 grid sm:grid-cols-2 gap-4">
           <Link
             href="/app/contacts"
-            className="clay-card p-6 rounded-3xl flex flex-col justify-between group cursor-pointer hover:border-[#C6F827]/40"
+            className="p-6 rounded-[6px] bg-[#141414] border border-[#262626] hover:border-[#383838] flex flex-col justify-between group cursor-pointer transition-all"
           >
             <div className="space-y-1">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">{t.contacts}</p>
-              <p className="text-3xl font-extrabold text-white tracking-tight">{contacts}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">{t.contacts}</p>
+              <p className="text-3xl font-black text-white tracking-tight font-mono">{contacts}</p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#1E293B] flex items-center justify-between text-xs font-bold text-[#C6F827]">
+            <div className="mt-6 pt-4 border-t border-[#262626] flex items-center justify-between text-xs font-semibold text-[#c5ff4a]">
               <span>View contacts</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </div>
@@ -110,13 +110,13 @@ export default async function OverviewPage() {
 
           <Link
             href="/app/forms"
-            className="clay-card p-6 rounded-3xl flex flex-col justify-between group cursor-pointer hover:border-[#C6F827]/40"
+            className="p-6 rounded-[6px] bg-[#141414] border border-[#262626] hover:border-[#383838] flex flex-col justify-between group cursor-pointer transition-all"
           >
             <div className="space-y-1">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">{t.liveForms}</p>
-              <p className="text-3xl font-extrabold text-white tracking-tight">{forms}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#a3a3a3]">{t.liveForms}</p>
+              <p className="text-3xl font-black text-white tracking-tight font-mono">{forms}</p>
             </div>
-            <div className="mt-6 pt-4 border-t border-[#1E293B] flex items-center justify-between text-xs font-bold text-[#C6F827]">
+            <div className="mt-6 pt-4 border-t border-[#262626] flex items-center justify-between text-xs font-semibold text-[#c5ff4a]">
               <span>Manage forms</span>
               <span className="group-hover:translate-x-1 transition-transform">→</span>
             </div>
@@ -125,41 +125,41 @@ export default async function OverviewPage() {
       </div>
 
       {/* 3. Latest Messages Card */}
-      <section className="clay-card p-6 sm:p-8 rounded-3xl space-y-4">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Latest messages</p>
-          <Link href="/app/inbox" className="text-xs font-bold text-[#C6F827] hover:underline">
+      <section className="p-6 rounded-[6px] bg-[#141414] border border-[#262626] space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-[#262626]">
+          <h2 className="text-sm font-bold text-white uppercase tracking-wider">Latest messages</h2>
+          <Link href="/app/inbox" className="text-xs font-semibold text-[#c5ff4a] hover:underline">
             View all →
           </Link>
         </div>
 
         {latest.length === 0 ? (
-          <p className="text-sm text-[#94A3B8] py-6 text-center">
+          <p className="text-xs text-[#737373] italic py-8 text-center">
             Nothing yet. Share your form from the{" "}
             <Link href="/app/forms" className={ui.link}>Forms</Link> page and messages will show up here.
           </p>
         ) : (
-          <ul className="divide-y divide-[#1E293B]">
+          <ul className="divide-y divide-[#262626]">
             {latest.map((m) => (
               <li key={m.id}>
                 <Link
                   href={`/app/inbox/${m.id}`}
-                  className="flex items-center justify-between gap-4 py-3.5 px-3 rounded-2xl hover:bg-[#1E293B]/40 transition-colors group"
+                  className="flex items-center justify-between gap-4 py-3 hover:bg-[#1a1a1a] px-3 rounded-[4px] transition-colors group"
                 >
                   <span className="min-w-0 flex items-center gap-3">
                     <span
                       className={`size-2 rounded-full shrink-0 ${
-                        m.status === "NEW" ? "bg-[#C6F827]" : "bg-transparent"
+                        m.status === "NEW" ? "bg-[#c5ff4a] shadow-[0_0_6px_#c5ff4a]" : "bg-transparent"
                       }`}
                     />
                     <span className="min-w-0">
-                      <span className={`block truncate ${m.status === "NEW" ? "text-white font-bold" : "text-[#94A3B8]"}`}>
+                      <span className={`block truncate text-xs font-semibold ${m.status === "NEW" ? "text-white" : "text-[#a3a3a3]"}`}>
                         {m.subject}
                       </span>
-                      <span className="block text-xs text-[#94A3B8] truncate">{m.name}</span>
+                      <span className="block text-[11px] text-[#737373] truncate">{m.name}</span>
                     </span>
                   </span>
-                  <span className="text-xs text-[#94A3B8] whitespace-nowrap">{formatDate(m.createdAt)}</span>
+                  <span className="text-xs text-[#737373] font-mono whitespace-nowrap">{formatDate(m.createdAt)}</span>
                 </Link>
               </li>
             ))}
