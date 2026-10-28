@@ -117,17 +117,19 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
               </div>
 
               {/* SECTION 1: Mode: Light / Dark */}
+              {/* SECTION 1: Mode */}
               <div className="space-y-2">
                 <label className="block text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider">
-                  {t.mode || "Appearance"}
+                  {t.mode || "Aspecto"}
                 </label>
                 <div className="grid grid-cols-2 gap-2 p-1 rounded-[6px] bg-[#0a0a0a] border border-[#262626]">
                   <button
                     type="button"
                     onClick={() => setMode("light")}
+                    style={mode === "light" ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2.5 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       mode === "light"
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
@@ -139,15 +141,16 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                         d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                       />
                     </svg>
-                    <span>{t.lightMode || "Light"}</span>
+                    <span>{t.lightMode || "Claro"}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setMode("dark")}
+                    style={mode === "dark" ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2.5 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       mode === "dark"
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
@@ -159,7 +162,7 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
                         d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                       />
                     </svg>
-                    <span>{t.darkMode || "Dark"}</span>
+                    <span>{t.darkMode || "Oscuro"}</span>
                   </button>
                 </div>
               </div>
@@ -167,79 +170,89 @@ export function PreferencesControls({ placement = "down" }: { placement?: "up" |
               {/* SECTION 2: Accent Color */}
               <div className="space-y-2 border-t border-[#262626] pt-4">
                 <label className="block text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider">
-                  {t.theme || "Accent Color"}
+                  {t.theme || "Color de Acento"}
                 </label>
                 <div className="grid grid-cols-4 gap-2">
-                  {THEMES.map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setTheme(item.id)}
-                      className={`flex items-center justify-center gap-1.5 py-2 px-2 min-h-[40px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
-                        theme === item.id
-                          ? "border-[#c5ff4a] bg-[#1a1a1a] text-white shadow-xs font-bold"
-                          : "border-[#262626] bg-[#0a0a0a] text-[#737373] hover:text-white hover:border-[#383838]"
-                      }`}
-                    >
-                      <span className="size-2.5 rounded-full shrink-0" style={{ backgroundColor: item.hex }} />
-                      <span className="text-[11px] capitalize">{item.name}</span>
-                    </button>
-                  ))}
+                  {THEMES.map((item) => {
+                    const isSelected = theme === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setTheme(item.id)}
+                        style={isSelected ? { borderColor: item.hex, boxShadow: `0 0 12px ${item.hex}40` } : undefined}
+                        className={`flex items-center justify-center gap-1.5 py-2 px-2 min-h-[40px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-[#1a1a1a] text-white font-bold"
+                            : "border-[#262626] bg-[#0a0a0a] text-[#737373] hover:text-white hover:border-[#383838]"
+                        }`}
+                      >
+                        <span className="size-2.5 rounded-full shrink-0" style={{ backgroundColor: item.hex }} />
+                        <span className="text-[11px] capitalize">{item.name}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* SECTION 3: Language */}
               <div className="space-y-2 border-t border-[#262626] pt-4">
                 <label className="block text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider">
-                  {t.language || "Language"}
+                  {t.language || "Idioma"}
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {LOCALES.map((l) => (
-                    <button
-                      key={l.code}
-                      type="button"
-                      onClick={() => setLocale(l.code)}
-                      className={`flex items-center justify-between px-3 py-2.5 min-h-[42px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
-                        locale === l.code
-                          ? "bg-[#c5ff4a] text-black border-[#c5ff4a] font-bold shadow-xs"
-                          : "bg-[#0a0a0a] text-[#a3a3a3] border-[#262626] hover:text-white hover:border-[#383838]"
-                      }`}
-                    >
-                      <span>{l.label}</span>
-                      <span className="font-mono text-[10px] uppercase opacity-80">{l.code}</span>
-                    </button>
-                  ))}
+                  {LOCALES.map((l) => {
+                    const isSelected = locale === l.code;
+                    return (
+                      <button
+                        key={l.code}
+                        type="button"
+                        onClick={() => setLocale(l.code)}
+                        style={isSelected ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)", borderColor: "var(--primary-accent)" } : undefined}
+                        className={`flex items-center justify-between px-3 py-2.5 min-h-[42px] rounded-[6px] border text-xs font-medium transition-all cursor-pointer ${
+                          isSelected
+                            ? "font-bold shadow-xs"
+                            : "bg-[#0a0a0a] text-[#a3a3a3] border-[#262626] hover:text-white hover:border-[#383838]"
+                        }`}
+                      >
+                        <span>{l.label}</span>
+                        <span className="font-mono text-[10px] uppercase opacity-80">{l.code}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* SECTION 4: Tactile Sound */}
               <div className="space-y-2 border-t border-[#262626] pt-4">
                 <label className="block text-[11px] font-sans font-medium text-[#737373] uppercase tracking-wider">
-                  {t.soundLabel || "Tactile Sound FX"}
+                  {t.soundLabel || "Respuesta Sonora"}
                 </label>
                 <div className="grid grid-cols-2 gap-2 p-1 rounded-[6px] bg-[#0a0a0a] border border-[#262626]">
                   <button
                     type="button"
                     onClick={() => setSound(true)}
+                    style={sound ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       sound
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
-                    <span>🔊 {t.soundOn || "Enabled"}</span>
+                    <span>🔊 {t.soundOn || "Activado"}</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setSound(false)}
+                    style={!sound ? { backgroundColor: "var(--primary-accent)", color: "var(--primary-accent-text, #000000)" } : undefined}
                     className={`flex items-center justify-center gap-2 py-2 px-3 min-h-[40px] rounded-[4px] text-xs font-semibold transition-all cursor-pointer ${
                       !sound
-                        ? "bg-[#c5ff4a] text-black shadow-xs font-bold"
+                        ? "font-bold shadow-xs"
                         : "text-[#a3a3a3] hover:text-white hover:bg-[#1a1a1a]"
                     }`}
                   >
-                    <span>🔇 {t.soundOff || "Muted"}</span>
+                    <span>🔇 {t.soundOff || "Silenciado"}</span>
                   </button>
                 </div>
               </div>
