@@ -15,48 +15,48 @@ export function InboxLandingView() {
       {/* 1. Header Superior */}
       <header className="w-full max-w-7xl mx-auto flex items-center justify-between pb-6 border-b border-[#1E293B]">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="size-10 rounded-2xl bg-[#121824] border border-[#1E293B] flex items-center justify-center p-2 shadow-sm transition-transform group-hover:scale-105 shrink-0">
+          <div className="size-10 rounded-[4px] bg-[#1f1f1f] border border-[#252525] flex items-center justify-center p-2 shadow-none transition-transform group-hover:scale-105 shrink-0">
             <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
-              <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-              <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
-              <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
-              <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+              <rect x="68" y="228" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="132" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="196" y="356" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="260" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+              <rect x="324" y="228" width="60" height="60" rx="2" fill="#c5ff4a" />
+              <rect x="390" y="166" width="46" height="46" rx="2" fill="#c5ff4a" />
+              <rect x="452" y="106" width="32" height="32" rx="2" fill="#c5ff4a" />
             </svg>
           </div>
           <div>
             <div className="flex items-baseline gap-1.5 leading-none">
-              <span className="font-black text-xl tracking-[-0.05em] text-white">
-                <span className="text-[#E9E7E0]">v</span>
-                <span className="text-[#C6F827]">out</span>
+              <span className="font-sans font-black text-xl tracking-[-0.03em] text-white">
+                <span className="text-[#e5e5e5]">v</span>
+                <span className="text-[#c5ff4a]">out</span>
               </span>
-              <span className="text-xs font-mono text-[#C6F827] px-1.5 py-0.5 rounded bg-[#121824] border border-[#1E293B]">
+              <span className="text-[11px] font-mono uppercase tracking-[0.1em] text-[#c5ff4a] px-1.5 py-0.5 rounded-[2px] bg-[#000000] border border-[#252525]">
                 inbox
               </span>
             </div>
-            <span className="text-xs text-slate-400 font-medium">Customer CRM &amp; Sovereign Contact Hub</span>
+            <span className="text-xs text-[#7a7a7a] font-sans font-medium">Customer CRM &amp; Sovereign Contact Hub</span>
           </div>
         </Link>
 
         <div className="flex items-center gap-3">
-          <nav className="hidden md:flex items-center gap-2 mr-2 text-xs font-bold text-slate-400">
-            <a href="#plataforma" className="px-3 py-1.5 rounded-lg text-white hover:bg-white/5 transition">
+          <nav className="hidden md:flex items-center gap-2 mr-2 text-xs font-sans font-medium uppercase tracking-[0.08em] text-[#7a7a7a]">
+            <a href="#plataforma" className="px-3 py-1.5 rounded-[4px] text-white hover:bg-[#252525] transition-colors">
               {t.navPlatform}
             </a>
             <a
               href="#contacto"
-              className="px-3 py-1.5 rounded-lg text-[#C6F827] hover:bg-[#C6F827]/10 transition flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-[4px] text-[#c5ff4a] hover:bg-[#252525] transition-colors flex items-center gap-1.5"
             >
-              <span className="size-1.5 rounded-full bg-[#C6F827] animate-pulse" />
+              <span className="size-1.5 rounded-full bg-[#c5ff4a] animate-pulse" />
               {t.navContact}
             </a>
           </nav>
           <PreferencesControls />
           <Link
             href="/login"
-            className="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider text-[var(--primary-accent)] hover:bg-[var(--primary-accent)]/10 rounded-xl border border-[#1E293B] transition"
+            className="hidden sm:inline-flex px-4 py-2 text-xs font-sans font-medium uppercase tracking-[0.08em] text-[#c5ff4a] hover:bg-[#252525] rounded-[4px] border border-[#252525] transition-colors"
           >
             {t.navLogin}
           </Link>
@@ -72,24 +72,24 @@ export function InboxLandingView() {
         <section id="plataforma" className="grid lg:grid-cols-12 gap-8 items-center pt-2">
           {/* Left Hero Text */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121824] border border-[#1E293B] shadow-xs text-xs font-bold text-[var(--primary-accent)]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#000000] border border-[#252525] shadow-none text-[11px] font-mono uppercase tracking-[0.1em] text-[var(--primary-accent)]">
               <span className="size-2 rounded-full bg-[var(--primary-accent)] animate-pulse" />
               <span>{t.heroSla}</span>
             </div>
 
-            <div>
-              <h1 className="text-4xl sm:text-5xl font-light text-slate-400 leading-tight">
+            <div className="font-serif">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#e5e5e5] leading-tight">
                 {t.heroH1A}
               </h1>
-              <h1 className="text-4xl sm:text-5xl font-light text-slate-400 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-[#e5e5e5] leading-tight">
                 {t.heroH1B}
               </h1>
-              <h1 className="text-4xl sm:text-5xl font-black text-[var(--primary-accent)] leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-light italic text-[var(--primary-accent)] leading-tight">
                 {t.heroH1C}
               </h1>
             </div>
 
-            <p className="text-base text-slate-400 leading-relaxed">
+            <p className="text-sm text-[#7a7a7a] font-sans leading-relaxed">
               {t.heroDesc}
             </p>
 
@@ -97,16 +97,16 @@ export function InboxLandingView() {
               <Link
                 href="/demo"
                 prefetch={false}
-                className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] font-black text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5 transition flex items-center gap-2 group hover:opacity-95"
+                className="px-5 py-2.5 rounded-[4px] bg-[var(--primary-accent)] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] shadow-[0_0_8px_rgba(197,255,74,0.45)] hover:opacity-95 active:scale-95 transition-all flex items-center gap-2 group"
               >
-                <span>🚀 Live Demo →</span>
+                <span>⚡ Live Demo →</span>
               </Link>
               <a
                 href="#contacto"
-                className="px-5 py-3.5 rounded-2xl bg-[#121824] text-white border border-[#1E293B] hover:border-[#C6F827] text-sm font-bold transition flex items-center gap-2"
+                className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] text-white border border-[#252525] hover:border-[#313131] hover:text-[#c5ff4a] text-xs font-sans font-medium uppercase tracking-[0.08em] transition-colors flex items-center gap-2"
               >
                 <span>{t.heroContactBtn}</span>
-                <span className="text-[#C6F827]">↓</span>
+                <span className="text-[#c5ff4a]">↓</span>
               </a>
               <Link href="/login" className={ui.ghost}>
                 {t.heroConsoleBtn}
@@ -116,11 +116,11 @@ export function InboxLandingView() {
 
           {/* Right Hero: Obsidian Dashboard Mockup */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl p-5 sm:p-7 relative overflow-hidden bg-[#121824] border border-[#1E293B] shadow-2xl">
+            <div className="rounded-[4px] p-5 sm:p-7 relative overflow-hidden bg-[#1f1f1f] border border-[#252525] shadow-none">
               {/* Top Bar of the Dashboard Mockup */}
-              <div className="flex items-center justify-between pb-5 border-b border-[#1E293B] mb-5">
+              <div className="flex items-center justify-between pb-5 border-b border-[#252525] mb-5">
                 <div className="flex items-center gap-2.5">
-                  <div className="size-8 rounded-xl bg-[var(--primary-accent)] text-[var(--primary-accent-text)] flex items-center justify-center font-bold text-xs shadow-xs">
+                  <div className="size-8 rounded-[4px] bg-[var(--primary-accent)] text-[#000000] flex items-center justify-center font-bold text-xs shadow-none">
                     <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -130,11 +130,11 @@ export function InboxLandingView() {
                       />
                     </svg>
                   </div>
-                  <span className="font-bold text-sm text-white">{t.mockupTitle}</span>
+                  <span className="font-sans font-semibold text-sm text-white">{t.mockupTitle}</span>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0A0E14] border border-[#1E293B] text-xs text-slate-400">
+                  <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#000000] border border-[#252525] text-xs font-mono text-[#7a7a7a]">
                     <span className="size-2 rounded-full bg-emerald-400" />
                     <span>{t.mockupCloudActive}</span>
                   </div>
@@ -143,10 +143,10 @@ export function InboxLandingView() {
 
               {/* Sub-cards */}
               <div className="grid sm:grid-cols-12 gap-4">
-                <div className="sm:col-span-7 p-5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-3">
+                <div className="sm:col-span-7 p-5 rounded-[4px] bg-[#161616] border border-[#252525] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white block">{t.mockupFlow}</span>
-                    <span className="text-[11px] font-bold text-[var(--primary-accent)]">{t.mockupAvg}</span>
+                    <span className="text-xs font-sans font-medium text-white block">{t.mockupFlow}</span>
+                    <span className="text-[11px] font-mono font-medium text-[var(--primary-accent)]">{t.mockupAvg}</span>
                   </div>
 
                   {/* Vector Wave Graph */}
@@ -166,13 +166,13 @@ export function InboxLandingView() {
                         d="M0 45 Q 30 50, 60 25 T 120 15 T 160 35 T 200 10"
                         fill="none"
                         stroke="var(--primary-accent)"
-                        strokeWidth="3"
+                        strokeWidth="2"
                         strokeLinecap="round"
                       />
                     </svg>
                   </div>
 
-                  <div className="flex justify-between text-[10px] text-slate-500 font-medium pt-1">
+                  <div className="flex justify-between text-[10px] text-[#7a7a7a] font-mono pt-1">
                     <span>{t.mockupWeek1}</span>
                     <span>{t.mockupWeek2}</span>
                     <span>{t.mockupWeek3}</span>
@@ -181,38 +181,38 @@ export function InboxLandingView() {
                 </div>
 
                 {/* Recent Inbound Leads Mini List */}
-                <div className="sm:col-span-5 p-5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-3">
+                <div className="sm:col-span-5 p-5 rounded-[4px] bg-[#161616] border border-[#252525] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white block">{t.mockupLeads}</span>
-                    <span className="text-[10px] text-[var(--primary-accent)] font-bold">{t.mockupUnread}</span>
+                    <span className="text-xs font-sans font-medium text-white block">{t.mockupLeads}</span>
+                    <span className="text-[10px] text-[var(--primary-accent)] font-mono">{t.mockupUnread}</span>
                   </div>
                   <div className="space-y-2 text-xs">
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-[#121824] border border-[#1E293B]">
+                    <div className="flex items-center justify-between p-2 rounded-[2px] bg-[#1f1f1f] border border-[#252525]">
                       <div className="flex items-center gap-2">
-                        <span className="size-6 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-[10px]">
+                        <span className="size-6 rounded-[2px] bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-[10px]">
                           ✉
                         </span>
                         <div>
-                          <p className="font-bold text-white text-[11px]">{t.mockupLead1Title}</p>
-                          <p className="text-[9px] text-slate-400">{t.mockupLead1Sub}</p>
+                          <p className="font-sans font-medium text-white text-[11px]">{t.mockupLead1Title}</p>
+                          <p className="text-[9px] text-[#7a7a7a] font-mono">{t.mockupLead1Sub}</p>
                         </div>
                       </div>
-                      <span className="font-bold text-emerald-400 text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                      <span className="font-mono text-emerald-400 text-[10px] bg-emerald-500/10 px-1.5 py-0.5 rounded-[2px] border border-emerald-500/20">
                         {t.mockupLead1Badge}
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-[#121824] border border-[#1E293B]">
+                    <div className="flex items-center justify-between p-2 rounded-[2px] bg-[#1f1f1f] border border-[#252525]">
                       <div className="flex items-center gap-2">
-                        <span className="size-6 rounded-lg bg-[var(--primary-accent)]/10 text-[var(--primary-accent)] flex items-center justify-center font-bold text-[10px]">
+                        <span className="size-6 rounded-[2px] bg-[var(--primary-accent)]/10 text-[var(--primary-accent)] flex items-center justify-center font-bold text-[10px]">
                           ⚡
                         </span>
                         <div>
-                          <p className="font-bold text-white text-[11px]">{t.mockupLead2Title}</p>
-                          <p className="text-[9px] text-slate-400">{t.mockupLead2Sub}</p>
+                          <p className="font-sans font-medium text-white text-[11px]">{t.mockupLead2Title}</p>
+                          <p className="text-[9px] text-[#7a7a7a] font-mono">{t.mockupLead2Sub}</p>
                         </div>
                       </div>
-                      <span className="font-bold text-[var(--primary-accent)] text-[10px] bg-[var(--primary-accent)]/10 px-2 py-0.5 rounded-full border border-[var(--primary-accent)]/20">
+                      <span className="font-mono text-[var(--primary-accent)] text-[10px] bg-[var(--primary-accent)]/10 px-1.5 py-0.5 rounded-[2px] border border-[var(--primary-accent)]/20">
                         {t.mockupLead2Badge}
                       </span>
                     </div>
@@ -224,17 +224,17 @@ export function InboxLandingView() {
         </section>
 
         {/* SECTION B: Integrated Sovereign Contact Gateway */}
-        <section id="contacto" className="pt-8 border-t border-[#1E293B] space-y-8">
+        <section id="contacto" className="pt-8 border-t border-[#252525] space-y-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#121824] text-[#C6F827] border border-[#1E293B]">
-                <span className="size-2 rounded-full bg-[#C6F827] animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] text-xs font-mono uppercase tracking-[0.1em] bg-[#000000] text-[#c5ff4a] border border-[#252525]">
+                <span className="size-2 rounded-full bg-[#c5ff4a] animate-pulse" />
                 <span>{t.contactSectionBadge}</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
-                {t.contactSectionTitleA} <span className="text-[#C6F827]">{t.contactSectionTitleB}</span>
+              <h2 className="text-3xl sm:text-4xl font-serif font-light text-white leading-tight">
+                {t.contactSectionTitleA} <span className="italic text-[#c5ff4a]">{t.contactSectionTitleB}</span>
               </h2>
-              <p className="text-sm text-slate-400 max-w-2xl leading-relaxed">
+              <p className="text-sm text-[#7a7a7a] font-sans max-w-2xl leading-relaxed">
                 {t.contactSectionDesc}
               </p>
             </div>
@@ -242,7 +242,7 @@ export function InboxLandingView() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="px-4 py-2 rounded-xl bg-[#121824] border border-[#1E293B] text-xs font-mono text-[#C6F827] hover:border-[#C6F827] transition"
+                className="px-4 py-2 rounded-[4px] bg-[#1f1f1f] border border-[#252525] text-xs font-mono text-[#c5ff4a] hover:border-[#313131] transition-colors"
               >
                 {t.contactOpenFull}
               </Link>
@@ -252,20 +252,20 @@ export function InboxLandingView() {
           <div className="grid lg:grid-cols-12 gap-8 items-start">
             {/* Left 4 Cols: Verified Direct Channels & System Status */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="p-5 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#94A3B8] block">
+              <div className="p-5 rounded-[4px] bg-[#1f1f1f] border border-[#252525] space-y-4">
+                <span className="text-xs font-sans font-medium uppercase tracking-[0.22em] text-[#7a7a7a] block">
                   {t.contactVerifiedChannels}
                 </span>
                 <div className="space-y-2.5 text-xs">
                   <a
                     href="mailto:agusmilesi2002@gmail.com"
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#0D121B] border border-[#1E293B] hover:border-[#334155] text-slate-300 hover:text-white transition group"
+                    className="flex items-center justify-between p-3 rounded-[4px] bg-[#161616] border border-[#252525] hover:border-[#313131] text-[#e5e5e5] hover:text-white transition-colors group"
                   >
                     <div>
-                      <p className="font-bold text-white">{t.contactDirectEmail}</p>
-                      <p className="text-[11px] text-slate-400 font-mono">agusmilesi2002@gmail.com</p>
+                      <p className="font-sans font-medium text-white">{t.contactDirectEmail}</p>
+                      <p className="text-[11px] text-[#7a7a7a] font-mono">agusmilesi2002@gmail.com</p>
                     </div>
-                    <span className="text-[10px] text-[#C6F827] font-mono group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-[10px] text-[#c5ff4a] font-mono group-hover:translate-x-0.5 transition-transform">
                       {t.contactSend}
                     </span>
                   </a>
@@ -274,13 +274,13 @@ export function InboxLandingView() {
                     href="https://www.linkedin.com/in/agustin-milesi-1982281b6/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#0D121B] border border-[#1E293B] hover:border-[#334155] text-slate-300 hover:text-white transition group"
+                    className="flex items-center justify-between p-3 rounded-[4px] bg-[#161616] border border-[#252525] hover:border-[#313131] text-[#e5e5e5] hover:text-white transition-colors group"
                   >
                     <div>
-                      <p className="font-bold text-white">{t.contactLinkedIn}</p>
-                      <p className="text-[11px] text-slate-400">{t.contactLinkedInSub}</p>
+                      <p className="font-sans font-medium text-white">{t.contactLinkedIn}</p>
+                      <p className="text-[11px] text-[#7a7a7a] font-sans">{t.contactLinkedInSub}</p>
                     </div>
-                    <span className="text-[10px] text-[#C6F827] font-mono group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-[10px] text-[#c5ff4a] font-mono group-hover:translate-x-0.5 transition-transform">
                       {t.contactConnect}
                     </span>
                   </a>
@@ -289,13 +289,13 @@ export function InboxLandingView() {
                     href="https://github.com/AgustinMilesi"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-[#0D121B] border border-[#1E293B] hover:border-[#334155] text-slate-300 hover:text-white transition group"
+                    className="flex items-center justify-between p-3 rounded-[4px] bg-[#161616] border border-[#252525] hover:border-[#313131] text-[#e5e5e5] hover:text-white transition-colors group"
                   >
                     <div>
-                      <p className="font-bold text-white">{t.contactCode}</p>
-                      <p className="text-[11px] text-slate-400 font-mono">github.com/AgustinMilesi</p>
+                      <p className="font-sans font-medium text-white">{t.contactCode}</p>
+                      <p className="text-[11px] text-[#7a7a7a] font-mono">github.com/AgustinMilesi</p>
                     </div>
-                    <span className="text-[10px] text-[#C6F827] font-mono group-hover:translate-x-0.5 transition-transform">
+                    <span className="text-[10px] text-[#c5ff4a] font-mono group-hover:translate-x-0.5 transition-transform">
                       {t.contactView}
                     </span>
                   </a>
@@ -303,34 +303,34 @@ export function InboxLandingView() {
               </div>
 
               {/* Edge Telemetry Badge */}
-              <div className="p-4 rounded-2xl bg-[#0D121B] border border-[#1E293B] text-xs font-mono space-y-2">
+              <div className="p-4 rounded-[4px] bg-[#161616] border border-[#252525] text-xs font-mono space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-400">{t.contactGatewayStatus}</span>
+                  <span className="text-[#7a7a7a]">{t.contactGatewayStatus}</span>
                   <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                     <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
                     {t.contactStatusActive}
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-slate-400">
+                <div className="flex items-center justify-between text-[#7a7a7a]">
                   <span>{t.contactLatency}</span>
                   <span className="text-white font-bold">&lt; 20ms</span>
                 </div>
-                <div className="flex items-center justify-between text-slate-400">
+                <div className="flex items-center justify-between text-[#7a7a7a]">
                   <span>{t.contactSecurity}</span>
-                  <span className="text-[#C6F827]">Honeypot + Zod</span>
+                  <span className="text-[#c5ff4a]">Honeypot + Zod</span>
                 </div>
               </div>
             </div>
 
             {/* Right 8 Cols: Full Interactive Contact Form */}
-            <div className="lg:col-span-8 p-6 sm:p-8 rounded-3xl bg-[#121824] border border-[#1E293B] shadow-2xl space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-[#1E293B]">
+            <div className="lg:col-span-8 p-6 sm:p-8 rounded-[4px] bg-[#1f1f1f] border border-[#252525] shadow-none space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-[#252525]">
                 <div>
-                  <h3 className="font-black text-lg text-white">{t.contactFormTitle}</h3>
-                  <p className="text-xs text-slate-400">{t.contactFormSub}</p>
+                  <h3 className="font-serif font-normal text-lg text-white">{t.contactFormTitle}</h3>
+                  <p className="text-xs text-[#7a7a7a] font-sans">{t.contactFormSub}</p>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1 rounded-xl bg-[#0A0E14] border border-[#1E293B] text-[11px] font-mono text-slate-400">
-                  <span className="size-1.5 rounded-full bg-[#C6F827]" />
+                <div className="flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#000000] border border-[#252525] text-[11px] font-mono text-[#7a7a7a]">
+                  <span className="size-1.5 rounded-full bg-[#c5ff4a]" />
                   <span>{t.contactTls}</span>
                 </div>
               </div>
@@ -341,16 +341,16 @@ export function InboxLandingView() {
         </section>
 
         {/* 3. Dedicated Preferences Block */}
-        <section className="pt-4 border-t border-[#1E293B]">
+        <section className="pt-4 border-t border-[#252525]">
           <PreferencesBlock />
         </section>
       </div>
 
       {/* 4. Footer */}
-      <footer className="w-full max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 pt-6 border-t border-[#1E293B]">
+      <footer className="w-full max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-[#7a7a7a] pt-6 border-t border-[#252525]">
         <p>© {new Date().getFullYear()} VOUT Inbox · {t.footerRights}</p>
         <div className="flex items-center gap-5">
-          <a href="#contacto" className="hover:text-[#C6F827] transition font-bold">
+          <a href="#contacto" className="hover:text-[#c5ff4a] transition-colors font-medium">
             {t.footerPortal}
           </a>
           <Link href="/legal" className="hover:text-[var(--primary-accent)] transition">

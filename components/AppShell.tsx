@@ -112,7 +112,7 @@ export function AppShell({
           <Link
             href="/app/settings"
             onClick={() => setMobileOpen(false)}
-            className="p-2 border border-white/10 hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-slate-300 rounded-full transition-colors flex items-center justify-center shrink-0"
+            className="p-2 border border-white/10 hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-slate-300 rounded-[4px] transition-colors flex items-center justify-center shrink-0"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
@@ -131,7 +131,7 @@ export function AppShell({
         <Link
           href="/login"
           onClick={() => setMobileOpen(false)}
-          className="w-full text-center text-[11px] font-semibold text-slate-400 hover:text-[var(--primary-accent)] py-1.5 px-2 rounded-xl border border-white/5 hover:border-[var(--primary-accent)]/30 transition block"
+          className="w-full text-center text-[11px] font-semibold text-slate-400 hover:text-[var(--primary-accent)] py-1.5 px-2 rounded-[4px] border border-white/5 hover:border-[var(--primary-accent)]/30 transition block"
           title="Ver pantalla de login"
         >
           🔑 Ver Pantalla de Login
@@ -141,9 +141,9 @@ export function AppShell({
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg-page,#0A0E14)] text-[var(--text-main,#FFFFFF)]">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-page,#060606)] text-[var(--text-main,#FFFFFF)]">
       {/* 1. Unified Top Header with Hamburger and PreferencesControls */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-2.5 bg-[var(--bg-card,#121824)] border-b border-[var(--border-card,#1E293B)] shrink-0 h-16 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+      <header className="sticky top-0 z-30 flex items-center justify-between px-4 sm:px-6 py-2.5 bg-[var(--bg-card,#1f1f1f)] border-b border-[var(--border-card,#252525)] shrink-0 h-16 shadow-none">
         <div className="flex items-center gap-3">
           {/* Hamburger toggle */}
           <button
@@ -155,7 +155,7 @@ export function AppShell({
                 toggleDesktopSidebar();
               }
             }}
-            className="p-2.5 rounded-2xl text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#1e293b)] transition-all duration-200 border border-[var(--border-card,#1E293B)] shadow-xs flex items-center justify-center active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
+            className="p-2.5 rounded-[4px] text-[var(--primary-accent)] hover:bg-[var(--bg-hover,#252525)] transition-all duration-150 border border-[var(--border-card,#252525)] shadow-none flex items-center justify-center active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent)]"
             title="Toggle menu / More space"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
@@ -171,21 +171,21 @@ export function AppShell({
           </button>
 
           <div className="flex items-center gap-2.5">
-            <span className="size-9 rounded-2xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center shrink-0 p-1.5 shadow-sm">
+            <span className="size-9 rounded-[4px] bg-[#000000] border border-[#252525] flex items-center justify-center shrink-0 p-1.5 shadow-none">
               <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
-                <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
-                <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
-                <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
-                <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
-                <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+                <rect x="68" y="228" width="60" height="60" rx="2" fill="#E5E5E5" />
+                <rect x="132" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+                <rect x="196" y="356" width="60" height="60" rx="2" fill="#E5E5E5" />
+                <rect x="260" y="292" width="60" height="60" rx="2" fill="#E5E5E5" />
+                <rect x="324" y="228" width="60" height="60" rx="2" fill="#c5ff4a" />
+                <rect x="390" y="166" width="46" height="46" rx="2" fill="#c5ff4a" />
+                <rect x="452" y="106" width="32" height="32" rx="2" fill="#c5ff4a" />
               </svg>
             </span>
             <span className="text-[var(--text-main,#FFFFFF)] font-black text-base sm:text-lg tracking-tight truncate max-w-[200px] sm:max-w-xs">
               {organizationName}
             </span>
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[var(--primary-accent)]/15 text-[var(--primary-accent)] border border-[var(--primary-accent)]/30">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] text-[10px] font-mono uppercase tracking-[0.1em] bg-[#000000] text-[var(--primary-accent)] border border-[var(--primary-accent)]/30">
               <span className="size-1.5 rounded-full bg-[var(--primary-accent)] animate-pulse" />
               Live Demo
             </span>
@@ -196,7 +196,7 @@ export function AppShell({
           <PreferencesControls />
           <Link
             href="/app/settings"
-            className="p-2.5 border border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-muted,#94A3B8)] bg-[var(--bg-card,#121824)] rounded-2xl transition-all duration-200 flex items-center justify-center shrink-0 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95"
+            className="p-2.5 border border-[var(--border-card,#252525)] hover:border-[var(--primary-accent)] hover:text-[var(--primary-accent)] text-[var(--text-muted,#7a7a7a)] bg-[var(--bg-card,#1f1f1f)] rounded-[4px] transition-colors duration-150 flex items-center justify-center shrink-0 active:scale-95"
             title={settingsLabel}
             aria-label={settingsLabel}
           >
