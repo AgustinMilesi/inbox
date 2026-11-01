@@ -38,8 +38,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "VOUT Inbox · Multi-Tenant Feedback Platform",

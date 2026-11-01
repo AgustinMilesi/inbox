@@ -175,7 +175,6 @@ html, body {
 }
 
 /* Accent Card */
-.clay-card-purple,
 .clay-card-accent {
   background: var(--primary-accent);
   color: var(--primary-accent-text, #000000);
